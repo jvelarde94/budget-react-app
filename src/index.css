@@ -1,13 +1,69 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* ******* Custom classes ******** */
+
+.container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  /* grid-template-areas:
+    ". . . header . . ."
+    ". . . income . . ."
+    "budget expenses leftover"
+    ". . . savings . . ."; */
+  /* grid-template-columns: auto auto auto;
+  grid-template-rows: auto; */
+  grid-gap: 30px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+.header {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.income-form {
+  grid-column: 1 / 4;
+  grid-row: 2;
+
+  padding: 25px 100px;
+  border: 2px solid grey;
+  background-color: rgb(255, 255, 250);
+}
+.income-form .salary-input {
+  margin-bottom: 20px;
+}
+
+.budget {
+  grid-column: 1 / 2;
+  grid-row: 3;
+}
+
+.expenses {
+  grid-column: 2 / 2;
+  grid-row: 3;
+}
+
+.leftover {
+  grid-column: 3 / 2;
+  grid-row: 3;
+}
+
+.savings {
+  grid-column: 1 / 4;
+  grid-row: 4;
 }

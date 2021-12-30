@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "@fontsource/roboto/500.css";
+import Header from "./components/Header";
+import Budget from "./components/Budget";
+import Expenses from "./components/Expenses";
+import Income from "./components/Income";
+import Leftover from "./components/Leftover";
+import Savings from "./components/Savings";
+import Networth from "./components/Networth";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Income />
+      <Budget />
+      <Expenses />
+      <Leftover />
+      <Savings />
     </div>
   );
 }
