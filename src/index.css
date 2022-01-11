@@ -40,9 +40,9 @@ code {
   grid-column: 1 / 4;
   grid-row: 2;
 
-  padding: 25px 100px;
+  /* padding: 25px 100px;
   border: 2px solid grey;
-  background-color: rgb(255, 255, 250);
+  background-color: rgb(255, 255, 250); */
 }
 .income-form .salary-input {
   margin-bottom: 20px;
@@ -52,6 +52,11 @@ code {
   grid-column: 1 / 2;
   grid-row: 3;
 }
+.budget-info {
+  padding: 25px 100px;
+  border: 2px solid grey;
+  background-color: rgb(226, 245, 220);
+}
 
 .expenses {
   grid-column: 2 / 2;
@@ -59,7 +64,7 @@ code {
 }
 
 .leftover {
-  grid-column: 3 / 2;
+  grid-column: 3 / 3;
   grid-row: 3;
 }
 

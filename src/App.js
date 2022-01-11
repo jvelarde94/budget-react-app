@@ -33,18 +33,17 @@ function App() {
           savings: value * 0.2,
         },
       ]);
-
-      console.log(budget);
     } else {
       // TODO: Print error message above or beneath input field
+      alert("Invalid input.");
     }
   };
 
   return (
     <div className="container">
       <Header />
-      <Income onBlur={validateIncome} />
-      <Budget />
+      <Income onChange={validateIncome} />
+      <Budget budget={budget} />
       <Expenses />
       <Leftover />
       <Savings />
