@@ -1,20 +1,40 @@
 import { React, useState } from "react";
 import { Typography, FormControl, TextField, Button } from "@mui/material";
 
-const Income = () => {
+const Income = ({ onBlur }) => {
   const [inputProps, setInputProps] = useState({
     inputMode: "numeric",
     pattern: "[0-9]*",
   });
+  // const [budget, setBudget] = useState([
+  //   {
+  //     needs: 0,
+  //     wants: 0,
+  //     savings: 0,
+  //   },
+  // ]);
 
-  const validateIncome = (e) => {
-    const value = e.target.value;
-    console.log("onchange - validate income:", value);
-  };
+  // const validateIncome = (e) => {
+  //   const value = e.target.value;
+  //   const pattern = /^\d+$/;
+  //   const result = pattern.test(value);
 
-  //   const submit = (e) => {
-  //     console.log(e);
-  //   };
+  //   // Check if input matches regex (numbers only)
+  //   if (!(value.length === 0) && result === true) {
+  //     // Perform calculations using provided number
+  //     setBudget([
+  //       {
+  //         needs: value * 0.5,
+  //         wants: value * 0.3,
+  //         savings: value * 0.2,
+  //       },
+  //     ]);
+
+  //     console.log(budget);
+  //   } else {
+  //     // TODO: Print error message above or beneath input field
+  //   }
+  // };
 
   return (
     <div className="income-form">
@@ -26,7 +46,8 @@ const Income = () => {
           label="Annual Salary ($)"
           variant="filled"
           inputProps={inputProps}
-          onChange={validateIncome}
+          // onBlur={validateIncome}
+          onBlur={onBlur}
         />
         {/* <Button
           type="submit"
@@ -37,6 +58,7 @@ const Income = () => {
           Calculate
         </Button> */}
       </FormControl>
+      {/* <p>{budget}</p> */}
     </div>
   );
 };
