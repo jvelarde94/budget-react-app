@@ -84,7 +84,7 @@ code {
 }
 
 .leftover {
-  grid-column: 3 / 2;
+  grid-column: 3 / 3;
   grid-row: 3;
 }
 

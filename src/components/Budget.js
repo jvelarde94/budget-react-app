@@ -2,7 +2,7 @@ import React from "react";
 import Income from "./Income";
 import { Typography } from "@mui/material";
 
-const Budget = ({income, onClick}) => {
+const Budget = ({income, onChange}) => {
 
   return (
     <div className="budget">
