@@ -71,9 +71,10 @@ input[type=number] {
   border: 2px solid grey;
   padding:25px;
   text-align: center;
+  font-size: 18px;
 }
 .budget-box .key {
-  font-weight:600;
+  font-weight:700;
 }
 .budget-box .info {
   font-style: italic;
