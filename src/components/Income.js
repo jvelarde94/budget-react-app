@@ -14,7 +14,7 @@ const Income = ({ onChange }) => {
         <TextField
           id="annual-salary"
           className="salary-input"
-          label="Annual Salary ($)"
+          label="Annual Salary ($):"
           variant="filled"
           inputProps={inputProps}
           onChange={onChange}
