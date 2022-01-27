@@ -34,6 +34,7 @@ code {
 .header {
   grid-column: 1 / 4;
   grid-row: 1;
+  margin-top: 25px;
 }
 
 .income-form {
@@ -48,6 +49,19 @@ code {
   /* margin-bottom: 20px; */
 }
 
+/* ** Remove step/arrows from number input *** */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* ******************************************** */
+
 .budget {
   grid-column: 1 / 2;
   grid-row: 3;
@@ -56,6 +70,7 @@ code {
   width: 100%;
   border: 2px solid grey;
   padding:25px;
+  text-align: center;
 }
 .budget-box .key {
   font-weight:600;

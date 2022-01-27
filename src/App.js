@@ -20,7 +20,7 @@ function App() {
   // Validate input for salary, then calculate budget based on input
   const validateIncome = (e) => {
     const value = e.target.value;
-    const pattern = /^\d+$/;
+    const pattern = /^[1-9]\d*(\.\d+)?$/;
     const result = pattern.test(value);
 
     // Check if input matches regex (numbers only)
