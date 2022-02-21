@@ -16,6 +16,7 @@ function App() {
       savings: 0,
     },
   );
+  const [expenses, setExpenses] = useState([])
 
   // Validate input for salary, then calculate budget based on input
   const validateIncome = (e) => {
@@ -53,12 +54,16 @@ function App() {
     }
   };
 
+  const addExpense = (expenses) => {
+    setExpenses(expenses)
+  }
+
   return (
     <div className="container">
       <Header />
       <Income onChange={validateIncome} />
       <Budget income={monthlyBudget} />
-      <Expenses />
+      <Expenses expenses={expenses} onAdd={addExpense}/>
       <Leftover />
       <Savings />
     </div>

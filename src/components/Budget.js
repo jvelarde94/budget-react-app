@@ -6,7 +6,7 @@ const Budget = ({income}) => {
 
   return (
     <div className="budget">
-      <Typography variant="h4">Monthly Budget</Typography>
+      <Typography variant="h4" className="box-title">Monthly Budget</Typography>
       <div className="budget-box">
         <p>
           <span className={`key needs`}>Needs </span>

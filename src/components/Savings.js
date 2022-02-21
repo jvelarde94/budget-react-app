@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@mui/material";
 
 /* TODO:
-  - calculate and display savings amount based on budget - leftovers
+  - Calculate and display difference (budget - leftovers)
 */
 
 const Savings = () => {
