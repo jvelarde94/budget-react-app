@@ -10,7 +10,7 @@ const Income = ({ onChange }) => {
 
   return (
     <div className="income-form">
-      {/* <Typography variant="h4">Income</Typography> */}
+      <Typography variant="h4">Income</Typography>
       <FormControl>
         <TextField
           id="annual-salary"

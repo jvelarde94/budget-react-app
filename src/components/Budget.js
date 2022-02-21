@@ -1,12 +1,11 @@
 import React from "react";
-import Income from "./Income";
 import { Typography } from "@mui/material";
 
 const Budget = ({income}) => {
 
   return (
     <div className="budget">
-      <Typography variant="h4" className="box-title">Monthly Budget</Typography>
+      <Typography variant="h4" className="box-title">Budget</Typography>
       <div className="budget-box">
         <p>
           <span className={`key needs`}>Needs </span>

@@ -1,19 +1,19 @@
 import React from 'react'
-import Expenses from './Expenses'
 
-const Expense = ({expenses, onSubmit}) => {
+/* TODO:
+  - Add delete item for each item
+*/
 
+const Expense = ({expenses}) => {
   return (
     <div className="expense-list">
       {expenses.map((expense) => (
-        <div className="expense-row">
+        <div key={expense.name} className="expense-row">
           <span className="expense-label">{expense.name}: </span>
           <span className="expense-amount">${expense.amount}</span>
         </div>
-        // <span className="expense-amount">{expense.amount}</span>
+        // Add delete item here
       ))}
-      {/* <span className="expense-label">{expenses.name}: </span> */}
-      <span className="expense-amount">{expenses.amount}</span>
     </div>
   )
 }

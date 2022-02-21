@@ -4,19 +4,21 @@ import Header from "./components/Header";
 import Budget from "./components/Budget";
 import Expenses from "./components/Expenses";
 import Income from "./components/Income";
-import Leftover from "./components/Leftover";
-import Savings from "./components/Savings";
-import Networth from "./components/Networth";
+// import Leftover from "./components/Leftover";
+// import Savings from "./components/Savings";
+// import Networth from "./components/Networth";
 
 function App() {
+  // Initialize each state used across the app
   const [monthlyBudget, setMonthlyBudget] = useState(
     {
       needs: 0,
       wants: 0,
       savings: 0,
-    },
-  );
+    },);
   const [expenses, setExpenses] = useState([])
+  const [needsOriginalVal, setNeedsOriginalVal] = useState(0);
+  const [wantsOriginalVal, setWantsOriginalVal] = useState(0);
 
   // Validate input for salary, then calculate budget based on input
   const validateIncome = (e) => {
@@ -31,6 +33,11 @@ function App() {
       let wants = ((value * 0.3) / 12).toFixed(2);
       let savings = ((value * 0.2) / 12).toFixed(2);
       
+      // Set original values for needs and wants to use for calculations later.
+      // Cannot use monthly budget value due to changing amount with later calculations.
+      setNeedsOriginalVal(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      setWantsOriginalVal(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
       // Set budget with conversion to string to add in comma
       setMonthlyBudget(
         {
@@ -56,7 +63,48 @@ function App() {
 
   const addExpense = (expenses) => {
     setExpenses(expenses)
+
+    // Adjust monthly budget
+    if (expenses && monthlyBudget) {
+      // TODO: Create logic for different arrays for Desires and Needs
+      // const needsExpenses = []
+      // const desiresExpenses = []
+
+      // Create array to hold all expense values
+      const expensesArray = []
+      {expenses.map((expense) => {
+        expensesArray.push(expense.amount)
+      })}
+      const sumExpensesPerYear = (expensesArray.reduce((prev, current) => prev + current)) * 12
+
+      // let needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumExpensesPerYear).toFixed(2);
+      let wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumExpensesPerYear).toFixed(2);
+
+      setMonthlyBudget({
+        needs: monthlyBudget.needs,
+        wants: wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        savings: monthlyBudget.savings
+      })
+    }
+
   }
+
+  // TODO: use useEffect() with dependency on expensesArray to update budget
+  // This will be for instance of changing annual salary when expenses are already set
+  // useEffect(() => {
+  //   console.log(expensesArray.length)
+  //   if (expensesArray.length > 0) {
+  //     const sumExpensesPerYear = (expensesArray.reduce((prev, current) => prev + current)) * 12
+  //     // let needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumExpensesPerYear).toFixed(2);
+  //     let wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumExpensesPerYear).toFixed(2);
+
+  //     setMonthlyBudget({
+  //       needs: monthlyBudget.needs,
+  //       wants: wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+  //       savings: monthlyBudget.savings
+  //     })
+  //   }
+  // }, expensesArray)
 
   return (
     <div className="container">
@@ -64,8 +112,8 @@ function App() {
       <Income onChange={validateIncome} />
       <Budget income={monthlyBudget} />
       <Expenses expenses={expenses} onAdd={addExpense}/>
-      <Leftover />
-      <Savings />
+      {/* <Leftover /> */}
+      {/* <Savings /> */}
     </div>
   );
 }

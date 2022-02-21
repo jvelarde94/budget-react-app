@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 const Header = () => {
   return (
     <div className="header">
-      <Typography variant="h3">Simple Money Manager</Typography>
+      <Typography variant="h3">Simple Monthly Money Manager</Typography>
     </div>
   );
 };

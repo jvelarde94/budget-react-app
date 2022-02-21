@@ -6,29 +6,27 @@ import Expense from "./Expense";
   - Create input fields, with ability to add/remove
   - Display in single column, until certain limit is reached (10?), then split into two columns
   - Pass input numbers to calculate leftover amounts for Leftover section
+  - Make checkbox to mark if labeled "needs" or "desired"
+  - Add delete button next to each item
 */
 
 const Expenses = ({expenses, onAdd}) => {
   const [expense, setExpense] = useState('')
-  const [expAmt, setExpAmt] = useState(0)
+  const [expAmt, setExpAmt] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAdd([...expenses, { name: expense, amount: expAmt }])
+    onAdd([...expenses, {name: expense, amount: parseInt(expAmt, 10)}])
     setExpense('')
-    setExpAmt(0)
+    setExpAmt('')
     document.getElementById("expense-type").focus();
   }
 
   return (
     <div className="expenses">
-      <Typography variant="h4">Expenses</Typography>
+      <Typography variant="h4" className="box-title">Expenses</Typography>
 
       <div className="expenses-box">
-        {/* <div className="expense-row ">
-          <span className="expense-label">{expenses[0].name}: </span>
-          <span className="expense-amount">{expenses[0].amount}</span>
-        </div> */}
         <Expense expenses={expenses}/>
         <form className="expense-form" onSubmit={onSubmit}>
           <input 
