@@ -56,13 +56,13 @@ input[type=number] {
 }
 /* ******************************************** */
 
-.box-title {
+/* .box-title {
   text-align:center;
-}
+} */
 
 /* BUDGET */
 .budget {
-  grid-column: 2 / 4;
+  grid-column: 1 / 3;
   grid-row: 3;
 }
 .budget-box {
@@ -97,7 +97,7 @@ input[type=number] {
 
 /* EXPENSES */
 .expenses {
-  grid-column: 1 / 3;
+  grid-column: 2 / 4;
   grid-row: 3;
 }
 
@@ -119,12 +119,26 @@ input[type=number] {
 .expense-list {
   margin: 15px auto;
 }
-.expense-label {
-  color: red;
+.expense-label-want {
+  color:blue;
+  font-style: italic;
   font-weight: 600;
+  margin: 0 7px;
+}
+.expense-label-need {
+  color:red;
+  font-style: italic;
+  font-weight: 600;
+  margin: 0 7px;
 }
 .expense-amount {
   font-weight: 500;
+}
+.expense-type-want {
+  color: blue;
+}
+.expense-type-need {
+  color: red;
 }
 
 .expense-form {

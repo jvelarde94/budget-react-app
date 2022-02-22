@@ -4,7 +4,6 @@ import { Typography, FormControl, TextField, Button } from "@mui/material";
 const Income = ({ onChange }) => {
   const [inputProps, setInputProps] = useState({
     type: "number",
-    // pattern: "[0-9]*",
     step: ".01",
   });
 

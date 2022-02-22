@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { Typography } from "@mui/material";
+import { Typography, TextField, FormControl } from "@mui/material";
 import Expense from "./Expense";
 
 /* TODO:
@@ -11,23 +11,37 @@ import Expense from "./Expense";
 */
 
 const Expenses = ({expenses, onAdd}) => {
+  const [inputProps, setInputProps] = useState({
+    type: "number",
+    step: ".01",
+  });
   const [expense, setExpense] = useState('')
   const [expAmt, setExpAmt] = useState('')
+  const [expType, setExpType] = useState('want')
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAdd([...expenses, {name: expense, amount: parseInt(expAmt, 10)}])
+
+    // If value entered, pass expenses entries to App
+    if (e.target[0].value !== "" && e.target[1].value !== "") {
+      onAdd([...expenses, {name: expense, amount: parseInt(expAmt, 10), type: expType}])
+    }
+
+    // Reset to blank for new entry
     setExpense('')
     setExpAmt('')
+
+    // Place focus on expense name for quicker new entry
     document.getElementById("expense-type").focus();
   }
 
   return (
     <div className="expenses">
-      <Typography variant="h4" className="box-title">Expenses</Typography>
+      <Typography variant="h4">Monthly Expenses</Typography>
 
       <div className="expenses-box">
-        <Expense expenses={expenses}/>
+        <Expense expenses={expenses} expType={expType}/>
         <form className="expense-form" onSubmit={onSubmit}>
           <input 
             id="expense-type" 
@@ -43,8 +57,33 @@ const Expenses = ({expenses, onAdd}) => {
             value={expAmt} 
             onChange={(e) => setExpAmt(e.target.value)}
           />
+          <br />
+          <input required type="radio" id="expense-want" name="expense-type" value="want" 
+          onClick={
+            (e) => {
+              setExpType('want')
+            }
+          }/>
+          <label htmlFor="expense-want">Want</label><br />
+          <input type="radio" id="expense-need" name="expense-type" value="need" 
+          onClick={
+            (e) => {
+              setExpType('need')
+            } 
+          }/>
+          <label htmlFor="expense-need">Need</label><br />
           <input type="submit" className="add-expense-button" value="Add expense" />
         </form>
+        {/* <FormControl>
+          <TextField
+            id="expense-amt"
+            className="salary-input"
+            label="Amount ($)"
+            variant="standard"
+            inputProps={inputProps}
+            onChange={(e) => setExpense(e.target.value)}
+          />
+        </FormControl> */}
       </div>
     </div>
   );
