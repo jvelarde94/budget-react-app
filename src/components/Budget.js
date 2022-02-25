@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-const Budget = ({income, needs, wants, savings}) => {
+const Budget = ({needs, wants, savings}) => {
   return (
     <div className="budget">
       <Typography variant="h4">Monthly Budget</Typography>
