@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Budget from "./components/Budget";
 import Expenses from "./components/Expenses";
 import Income from "./components/Income";
+import Reset from "./components/Reset";
 // import Leftover from "./components/Leftover";
 // import Savings from "./components/Savings";
 // import Networth from "./components/Networth";
@@ -96,12 +97,23 @@ function App() {
     }
   }
 
+  const reset = () => {
+    setNeeds(0)
+    setWants(0)
+    setSavings(0)
+    setExpenses([])
+    setNeedsOriginalVal(0)
+    setWantsOriginalVal(0)
+    setSavingsOriginalVal(0)
+  }
+
   return (
     <div className="container">
       <Header />
       <Income onChange={validateIncome} />
       <Expenses expenses={expenses} onAdd={addExpense}/>
       <Budget /*income={monthlyBudget}*/ needs={needs} wants={wants} savings={savings} />
+      <Reset onClick={reset} />
     </div>
   );
 }

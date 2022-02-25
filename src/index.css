@@ -173,4 +173,13 @@ input[type=number] {
   text-align: center;
   font-size: 18px;
 }
-/* SAVINGS */
+/* END SAVINGS */
+
+
+/* RESET */
+.reset {
+  grid-column: 1 / 4;
+  grid-row: 4;
+  margin: 0 auto;
+}
+/* END RESET*/

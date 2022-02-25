@@ -17,7 +17,7 @@ const Expenses = ({expenses, onAdd}) => {
   });
   const [expense, setExpense] = useState('')
   const [expAmt, setExpAmt] = useState('')
-  const [expType, setExpType] = useState('want')
+  const [expType, setExpType] = useState('')
   
 
   const onSubmit = (e) => {
