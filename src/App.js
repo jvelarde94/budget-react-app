@@ -97,23 +97,26 @@ function App() {
     }
   }
 
-  const reset = () => {
-    setNeeds(0)
-    setWants(0)
-    setSavings(0)
-    setExpenses([])
-    setNeedsOriginalVal(0)
-    setWantsOriginalVal(0)
-    setSavingsOriginalVal(0)
+  const clearAll = () => {
+    if (window.confirm("Are you sure you would like to reset all information?") === true) {
+      document.getElementById('annual-salary').value='';
+      setNeeds(0)
+      setWants(0)
+      setSavings(0)
+      setExpenses([])
+      setNeedsOriginalVal(0)
+      setWantsOriginalVal(0)
+      setSavingsOriginalVal(0)
+    }
   }
 
   return (
     <div className="container">
       <Header />
-      <Income onChange={validateIncome} />
+      <Income onChange={validateIncome}/>
       <Expenses expenses={expenses} onAdd={addExpense}/>
       <Budget needs={needs} wants={wants} savings={savings} />
-      <Reset onClick={reset} />
+      <Reset onClick={clearAll} />
     </div>
   );
 }
