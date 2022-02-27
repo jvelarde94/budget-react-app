@@ -1,5 +1,5 @@
 import {React, useState} from "react";
-import { Typography, TextField, FormControl } from "@mui/material";
+import { Typography, TextField, FormControl, Button} from "@mui/material";
 import Expense from "./Expense";
 
 /* TODO:
@@ -72,7 +72,7 @@ const Expenses = ({expenses, onAdd}) => {
             } 
           }/>
           <label htmlFor="expense-need">Need</label><br />
-          <input type="submit" className="add-expense-button" value="Add expense" />
+          <Button variant="outlined" color="success" type="submit" className="add-expense-button">Add expense</Button>
         </form>
         {/* <FormControl>
           <TextField
