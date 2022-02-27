@@ -3,13 +3,13 @@ import { Typography, FormControl, TextField, Button } from "@mui/material";
 
 const Income = ({ onChange }) => {
   const [inputProps, setInputProps] = useState({
-    inputMode: "numeric",
-    pattern: "[0-9]*",
+    type: "number",
+    step: ".01",
   });
 
   return (
     <div className="income-form">
-      {/* <Typography variant="h4">Income</Typography> */}
+      <Typography variant="h4">Income</Typography>
       <FormControl>
         <TextField
           id="annual-salary"
