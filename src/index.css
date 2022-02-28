@@ -85,12 +85,19 @@ input[type=number] {
 .budget-box .wants {
   color: blue;
 }
+.budget-box .savings-amount {
+  margin: 25px auto 0 auto;
+}
 .budget-box .savings {
   color: green;
 }
 .budget-box .result {
   font-weight:700;
   text-decoration: underline;
+}
+.budget-box .original-val {
+  font-size: .75em;
+  font-style: italic;
 }
 /* END BUDGET */
 

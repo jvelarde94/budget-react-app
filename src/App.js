@@ -115,7 +115,7 @@ function App() {
       <Header />
       <Income onChange={validateIncome}/>
       <Expenses expenses={expenses} onAdd={addExpense}/>
-      <Budget needs={needs} wants={wants} savings={savings} />
+      <Budget needs={needs} wants={wants} savings={savings} needsOriginalVal={needsOriginalVal} wantsOriginalVal={wantsOriginalVal}/>
       <Reset onClick={clearAll} />
     </div>
   );
