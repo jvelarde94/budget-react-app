@@ -17,7 +17,7 @@ function App() {
   const [expenses, setExpenses] = useState([])
   const [needsOriginalVal, setNeedsOriginalVal] = useState(0);
   const [wantsOriginalVal, setWantsOriginalVal] = useState(0);
-  const [savingsOriginalVal, setSavingsOriginalVal] = useState(0);
+  const [overallSavings, setOverallSavings] = useState(0);
 
   // Validate input for salary, then calculate budget based on input
   const validateIncome = (e) => {
@@ -31,23 +31,28 @@ function App() {
       let needs = ((value * 0.5) / 12).toFixed(2);
       let wants = ((value * 0.3) / 12).toFixed(2);
       let savings = ((value * 0.2) / 12).toFixed(2);
+      let overallSavings = parseFloat(needs) + parseFloat(wants) + parseFloat(savings);
       
       // Set original values for needs and wants to use for calculations later.
       // Cannot use monthly budget value due to changing amount with later calculations.
       setNeedsOriginalVal(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setWantsOriginalVal(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      setSavingsOriginalVal(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      // setOverallSavings()
+      console.log(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+      console.log(needsOriginalVal)
 
       // Set budget with conversion to string to add in comma
       setNeeds(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setWants(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setSavings(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+      setOverallSavings(overallSavings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
     } 
     else {
       // If nothing is in field, set budget to 0
       setNeeds(0);
       setWants(0);
       setSavings(0);
+      setOverallSavings(0);
 
       // TODO: Print error message above or beneath input field
     }
@@ -106,7 +111,7 @@ function App() {
       setExpenses([])
       setNeedsOriginalVal(0)
       setWantsOriginalVal(0)
-      setSavingsOriginalVal(0)
+      setOverallSavings(0)
     }
   }
 
@@ -115,7 +120,7 @@ function App() {
       <Header />
       <Income onChange={validateIncome}/>
       <Expenses expenses={expenses} onAdd={addExpense}/>
-      <Budget needs={needs} wants={wants} savings={savings} needsOriginalVal={needsOriginalVal} wantsOriginalVal={wantsOriginalVal}/>
+      <Budget needs={needs} wants={wants} savings={savings} overallSavings={overallSavings} needsOriginalVal={needsOriginalVal} wantsOriginalVal={wantsOriginalVal}/>
       <Reset onClick={clearAll} />
     </div>
   );
