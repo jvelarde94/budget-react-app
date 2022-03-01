@@ -28,7 +28,7 @@ const Budget = ({needs, wants, savings, overallSavings, needsOriginalVal, wantsO
         </p>
         <hr/>
         <p className="overall-savings">
-          <span className={`key`}>Overall Savings:</span>
+          <span className={`key`}>Overall Savings: </span>
           <span>${overallSavings}</span>
         </p>
       </div>
