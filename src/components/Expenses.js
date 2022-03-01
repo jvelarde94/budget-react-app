@@ -42,6 +42,7 @@ const Expenses = ({expenses, onAdd}) => {
 
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType}/>
+        <hr/>
         <form className="expense-form" onSubmit={onSubmit}>
           <input 
             id="expense-type" 
