@@ -25,7 +25,7 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
 
     // If value entered, pass expenses entries to App
     if (e.target[0].value !== "" && e.target[1].value !== "") {
-      onAdd([...expenses, {id: expenses.length, name: expense, amount: parseInt(expAmt, 10), type: expType}])
+      onAdd([...expenses, {id: expenses.length+1, name: expense, amount: parseInt(expAmt, 10), type: expType}])
     }
 
     // Reset to blank for new entry

@@ -5,17 +5,19 @@ import {React, useState} from 'react'
   - Add delete item functionality
 */
 
-const Expense = ({expenses, expType, onDelete}) => {
-  const deleteExpense = (e, id) => {
-    // e.target.parentElement.remove()
-    onDelete(expenses.filter(expense => expense.id !== id))
+const Expense = ({expenses, onDelete}) => {
+  const deleteExpense = (e) => {
+    let elementId = e.target.parentElement.id.replace(/^\D+/g, '')
+    let indexOfElement = expenses.findIndex(expense => expense.id == elementId)
+    expenses.splice(indexOfElement, 1)
+    onDelete(expenses)
   }
 
   return (
     <div className="expense-list">
       <div className="expense-column-needs">
         {expenses.map((expense) => (
-          <div key={'n-'+expense.id} className={
+          <div key={'n-'+expense.id} id={"need-"+expense.id} className={
             expense.type === "need" ? "expense-row-need" : "hide"
           }>
             <span
@@ -25,7 +27,7 @@ const Expense = ({expenses, expType, onDelete}) => {
               {expense.name}: 
             </span>
             <span className="expense-amount">${expense.amount}</span>
-            <button onClick={(e) => deleteExpense(e, expense.id)}>Delete</button>
+            <button onClick={(e) => deleteExpense(e)}>Delete</button>
           </div>
         ))}
       </div>
@@ -34,7 +36,7 @@ const Expense = ({expenses, expType, onDelete}) => {
 
       <div className="expense-column-wants">
         {expenses.map((expense) => (
-          <div key={expense.name} className={
+          <div key={'w-'+expense.id} id={"want-"+expense.id} className={
             expense.type === "want" ? "expense-row-want" : "hide"
           }>
             <span
@@ -44,7 +46,7 @@ const Expense = ({expenses, expType, onDelete}) => {
               {expense.name}: 
             </span>
             <span className="expense-amount">${expense.amount}</span>
-            <button onClick={(e) => deleteExpense(e, expense.id)}>Delete</button>
+            <button onClick={(e) => deleteExpense(e)}>Delete</button>
           </div>
         ))}
       </div>
