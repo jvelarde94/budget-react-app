@@ -137,6 +137,12 @@ input[type=number] {
 .expenses-box .info {
   font-weight: 700;
 }
+.expenses-box .hide {
+  display: none;
+}
+.expenses-box .show {
+  display: block;
+}
 /* END EXPENSES*/
 
 /* EXPENSE */
@@ -180,11 +186,6 @@ input[type=number] {
 
 .expense-form {
   margin: 2px auto;
-}
-
-.add-expense-button {
-  display: block;
-  margin: 15px auto;
 }
 /* END EXPENSE */
 

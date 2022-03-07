@@ -19,6 +19,18 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
   const [expAmt, setExpAmt] = useState('')
   const [expType, setExpType] = useState('')
   
+  const showAddExpenses = (e) => {
+    let form = e.target.previousSibling
+    if (form.className.includes("hide")) {
+      e.target.innerHTML = "Hide"
+      form.classList.add("show")
+      form.classList.remove("hide")
+    } else {
+      e.target.innerHTML = "Add expenses"
+      form.classList.remove("show")
+      form.classList.add("hide")
+    }
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,38 +55,43 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType} onDelete={onDelete}/>
         <hr/>
-        <form className="expense-form" onSubmit={onSubmit}>
-          <input 
-            id="expense-type" 
-            type="text"
-            placeholder="Name" 
-            value={expense} 
-            onChange={(e) => setExpense(e.target.value)}
-          />
-          <input 
-            id="expense-amt" 
-            type="number"
-            placeholder="Amount ($)" 
-            value={expAmt} 
-            onChange={(e) => setExpAmt(e.target.value)}
-          />
-          <br />
-          <input required type="radio" id="expense-want" name="expense-type" value="want" 
-          onClick={
-            (e) => {
-              setExpType('want')
-            }
-          }/>
-          <label htmlFor="expense-want">Want</label><br />
-          <input type="radio" id="expense-need" name="expense-type" value="need" 
-          onClick={
-            (e) => {
-              setExpType('need')
-            } 
-          }/>
-          <label htmlFor="expense-need">Need</label><br />
-          <Button variant="outlined" color="success" type="submit" className="add-expense-button">Add expense</Button>
-        </form>
+        <div className="add-expenses-collapsible">
+          <form className="expense-form hide" onSubmit={onSubmit}>
+            <input 
+              id="expense-type" 
+              type="text"
+              placeholder="Name" 
+              value={expense} 
+              onChange={(e) => setExpense(e.target.value)}
+            />
+            <input 
+              id="expense-amt" 
+              type="number"
+              placeholder="Amount ($)" 
+              value={expAmt} 
+              onChange={(e) => setExpAmt(e.target.value)}
+            />
+            <br />
+            <input required type="radio" id="expense-want" name="expense-type" value="want" 
+            onClick={
+              (e) => {
+                setExpType('want')
+              }
+            }/>
+            <label htmlFor="expense-want">Want</label>
+            <br />
+            <input type="radio" id="expense-need" name="expense-type" value="need" 
+            onClick={
+              (e) => {
+                setExpType('need')
+              } 
+            }/>
+            <label htmlFor="expense-need">Need</label>
+            <br />
+            <Button variant="contained" color="success" size="medium" type="submit">Add expense</Button>
+          </form>
+          <Button variant="outlined" color="secondary" size="medium" onClick={showAddExpenses}>Add expenses</Button>
+        </div>
         {/* <FormControl>
           <TextField
             id="expense-amt"
