@@ -5,12 +5,17 @@ import {React, useState} from 'react'
   - Add delete item functionality
 */
 
-const Expense = ({expenses, expType}) => {
+const Expense = ({expenses, expType, onDelete}) => {
+  const deleteExpense = (e, id) => {
+    // e.target.parentElement.remove()
+    onDelete(expenses.filter(expense => expense.id !== id))
+  }
+
   return (
     <div className="expense-list">
       <div className="expense-column-needs">
         {expenses.map((expense) => (
-          <div key={expense.name} className={
+          <div key={'n-'+expense.id} className={
             expense.type === "need" ? "expense-row-need" : "hide"
           }>
             <span
@@ -20,6 +25,7 @@ const Expense = ({expenses, expType}) => {
               {expense.name}: 
             </span>
             <span className="expense-amount">${expense.amount}</span>
+            <button onClick={(e) => deleteExpense(e, expense.id)}>Delete</button>
           </div>
         ))}
       </div>
@@ -38,6 +44,7 @@ const Expense = ({expenses, expType}) => {
               {expense.name}: 
             </span>
             <span className="expense-amount">${expense.amount}</span>
+            <button onClick={(e) => deleteExpense(e, expense.id)}>Delete</button>
           </div>
         ))}
       </div>

@@ -10,7 +10,7 @@ import Expense from "./Expense";
   - Add delete button next to each item
 */
 
-const Expenses = ({expenses, onAdd}) => {
+const Expenses = ({expenses, onAdd, onDelete}) => {
   const [inputProps, setInputProps] = useState({
     type: "number",
     step: ".01",
@@ -25,7 +25,7 @@ const Expenses = ({expenses, onAdd}) => {
 
     // If value entered, pass expenses entries to App
     if (e.target[0].value !== "" && e.target[1].value !== "") {
-      onAdd([...expenses, {name: expense, amount: parseInt(expAmt, 10), type: expType}])
+      onAdd([...expenses, {id: expenses.length, name: expense, amount: parseInt(expAmt, 10), type: expType}])
     }
 
     // Reset to blank for new entry
@@ -41,7 +41,7 @@ const Expenses = ({expenses, onAdd}) => {
       <Typography variant="h4">Monthly Expenses</Typography>
 
       <div className="expenses-box">
-        <Expense expenses={expenses} expType={expType}/>
+        <Expense expenses={expenses} expType={expType} onDelete={onDelete}/>
         <hr/>
         <form className="expense-form" onSubmit={onSubmit}>
           <input 

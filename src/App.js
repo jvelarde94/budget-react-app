@@ -50,7 +50,9 @@ function App() {
     else {
       // If nothing is in field, set budget to 0
       setNeeds(0);
+      setNeedsOriginalVal(0);
       setWants(0);
+      setWantsOriginalVal(0);
       setSavings(0);
       setOverallSavings(0);
 
@@ -64,11 +66,18 @@ function App() {
       return null
     }
     setExpenses(expenses)
-    adjustBudget(needs, wants, savings, expenses)
+    adjustBudget(expenses)
+  }
+
+  const deleteExpense = (expenses) => {
+    setExpenses(expenses)
+    console.log(expenses)
+    adjustBudget(expenses)  //FIX THIS
   }
   
   // Adjust monthly budget based on expenses
-  const adjustBudget = (needs, wants, savings, expenses) => {
+  const adjustBudget = (expenses) => {
+    console.log('adjustbudget expenses', expenses)
     if (expenses.length !== 0) {
       // Create separate array for needs expenses
       const needsExpensesVals = []
@@ -91,14 +100,22 @@ function App() {
         const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
         const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
         setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+      } else {
+        setNeeds(needsOriginalVal)
       }
 
       if (wantsExpensesVals.length !== 0) {
         const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
         const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
         setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+      } else {
+        setWants(wantsOriginalVal)
       }
-
+    }
+    // If expenses are empty
+    else {
+      setNeeds(needsOriginalVal)
+      setWants(wantsOriginalVal)
     }
   }
 
@@ -119,7 +136,7 @@ function App() {
     <div className="container">
       <Header />
       <Income onChange={validateIncome}/>
-      <Expenses expenses={expenses} onAdd={addExpense}/>
+      <Expenses expenses={expenses} onAdd={addExpense} onDelete={deleteExpense}/>
       <Budget needs={needs} wants={wants} savings={savings} overallSavings={overallSavings} needsOriginalVal={needsOriginalVal} wantsOriginalVal={wantsOriginalVal}/>
       <Reset onClick={clearAll} />
     </div>
