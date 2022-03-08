@@ -79,53 +79,51 @@ function App() {
   }
 
   // Adjust budget when expenses state is updated
-    useEffect(() => {
-      const needsExpensesVals = []
-      const wantsExpensesVals = []
+  useEffect(() => {
+    const needsExpensesVals = []
+    const wantsExpensesVals = []
 
-      console.log('useEffect expenses:', expenses)
+    console.log('useEffect expenses:', expenses)
 
-      if (typeof(expenses) !== 'undefined' && expenses.length !== 0) {
-        {expenses.map((expense) => {
-          if (expense.type == 'need') {
-            needsExpensesVals.push(expense.amount)
-            if (needsExpensesVals.length !== 0) {
-              const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
-              const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
-              setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-      
-              const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-            } else {
-              setNeeds(needsOriginalVal)
-            }
+    if (typeof(expenses) !== 'undefined' && expenses.length !== 0) {
+      {expenses.map((expense) => {
+        if (expense.type == 'need') {
+          needsExpensesVals.push(expense.amount)
+          if (needsExpensesVals.length !== 0) {
+            const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
+            const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
+            setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    
+            const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+            setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+          } else {
+            setNeeds(needsOriginalVal)
           }
-          else if (expense.type === 'want') {
-            wantsExpensesVals.push(expense.amount)
-            if (wantsExpensesVals.length !== 0) {
-              const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
-              const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
-              setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-      
-              const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wantsAdj).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-            } else {
-              setWants(wantsOriginalVal)
-            }
+        }
+        else if (expense.type === 'want') {
+          wantsExpensesVals.push(expense.amount)
+          if (wantsExpensesVals.length !== 0) {
+            const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
+            const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
+            setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    
+            const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wantsAdj).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+            setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+          } else {
+            setWants(wantsOriginalVal)
           }
-        })}
-      } 
-      // If expenses are empty
-      else {
-        setNeeds(needsOriginalVal)
-        setWants(wantsOriginalVal)
-        
-        // Set overall savings amount when there are no expenses (Avoids error on page load)
-        // if (typeof(needsOriginalVal) === 'string' && typeof(wantsOriginalVal) === 'string') {
-          setOverallSavings( parseFloat((needsOriginalVal).replace(',', '')) + parseFloat((wantsOriginalVal).replace(',', '')) + parseFloat((savingsOriginalVal).replace(',', '')) )
-        // }
-      }
-    }, [expenses])
+        }
+      })}
+    } 
+    // If expenses are empty
+    else {
+      setNeeds(needsOriginalVal)
+      setWants(wantsOriginalVal)
+      
+      // Set overall savings amount when there are no expenses (Avoids error on page load)
+      setOverallSavings(parseFloat((needsOriginalVal).replace(',', '')) + parseFloat((wantsOriginalVal).replace(',', '')) + parseFloat((savingsOriginalVal).replace(',', '')))
+    }
+  }, [expenses])
 
   const clearAll = () => {
     if (window.confirm("Are you sure you would like to reset all information?") === true) {
