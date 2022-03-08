@@ -18,6 +18,7 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
   const [expense, setExpense] = useState('')
   const [expAmt, setExpAmt] = useState('')
   const [expType, setExpType] = useState('')
+  const [keyCounter, updateKeyCounter] = useState(1)
   
   const showAddExpenses = (e) => {
     let form = e.target.previousSibling
@@ -37,7 +38,9 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
 
     // If value entered, pass expenses entries to App
     if (e.target[0].value !== "" && e.target[1].value !== "") {
-      onAdd([...expenses, {id: expenses.length+1, name: expense, amount: parseInt(expAmt, 10), type: expType}])
+      let keyCounterIncr = keyCounter + 1
+      onAdd([...expenses, {id: keyCounter, name: expense, amount: parseInt(expAmt, 10), type: expType}])
+      updateKeyCounter(keyCounterIncr)
     }
 
     // Reset to blank for new entry
