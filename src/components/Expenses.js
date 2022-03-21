@@ -53,7 +53,8 @@ const Expenses = ({expenses, onAdd, onDelete}) => {
 
   return (
     <div className="expenses">
-      <Typography variant="h4">Monthly Expenses</Typography>
+      {/* <Typography variant="h4">Monthly Expenses</Typography> */}
+      <h1 className="header-title">Monthly Expenses</h1>
 
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType} onDelete={onDelete}/>

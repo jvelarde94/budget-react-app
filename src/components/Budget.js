@@ -4,7 +4,8 @@ import { Typography } from "@mui/material";
 const Budget = ({needs, wants, savings, overallSavings, needsOriginalVal, wantsOriginalVal}) => {
   return (
     <div className="budget">
-      <Typography variant="h4">Monthly Budget</Typography>
+      {/* <Typography variant="h4">Monthly Budget</Typography> */}
+      <h1 className="header-title">Monthly Budget</h1>
       <div className="budget-box">
         <p>
           <span className={`key needs`}>Needs </span>

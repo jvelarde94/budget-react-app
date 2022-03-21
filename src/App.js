@@ -83,7 +83,7 @@ function App() {
     const needsExpensesVals = []
     const wantsExpensesVals = []
 
-    console.log('useEffect expenses:', expenses)
+    // console.log('useEffect expenses:', expenses)
 
     if (typeof(expenses) !== 'undefined' && expenses.length !== 0) {
       {expenses.map((expense) => {
@@ -93,9 +93,9 @@ function App() {
             const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
             const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
             setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    
-            const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-            setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            console.log('1st useEffect needs: ', needs)
+            // const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+            // setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
           } else {
             setNeeds(needsOriginalVal)
           }
@@ -106,9 +106,9 @@ function App() {
             const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
             const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
             setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    
-            const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wantsAdj).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-            setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            console.log('1st useEffect wants: ', wants)
+            // const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wantsAdj).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+            // setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
           } else {
             setWants(wantsOriginalVal)
           }
@@ -125,12 +125,21 @@ function App() {
     }
   }, [expenses])
 
+  // Update savings (will this work?)
+  // useEffect(() => {
+  //   // console.log('update savings needs', needs)
+  //   // console.log('update savings wants', wants)
+  //   let overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+  //   console.log('update savings overallSavingsCalc', overallSavingsCalc)
+  //   setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+  // }, [needs, wants])
+
   const clearAll = () => {
     if (window.confirm("Are you sure you would like to reset all information?") === true) {
       document.getElementById('annual-salary').value='';
       setNeeds('0')
       setWants('0')
-      setSavings(0)
+      setSavings('0')
       setExpenses([])
       setNeedsOriginalVal('0')
       setWantsOriginalVal('0')

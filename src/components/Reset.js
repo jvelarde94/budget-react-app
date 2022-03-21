@@ -4,7 +4,8 @@ import Button from '@mui/material/Button'
 const Reset = ({onClick}) => {
   return (
     <div className="reset">
-        <Button variant="contained" color="error" className="reset-data" onClick={onClick}>Clear all</Button>
+        {/* <img className="img" src="./rs-goblin.png"/> */}
+        <Button variant="outlined" color="error" className="reset-data" onClick={onClick}>Clear all</Button>
     </div>
   )
 }
