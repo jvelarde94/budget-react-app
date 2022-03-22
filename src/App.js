@@ -1,4 +1,4 @@
-import { React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import "@fontsource/roboto/500.css";
 import Header from "./components/Header";
 import Budget from "./components/Budget";
@@ -11,14 +11,14 @@ import Reset from "./components/Reset";
 
 function App() {
   // Initialize each state used across the app
-  const [needs, setNeeds] = useState('0')
-  const [wants, setWants] = useState('0')
-  const [savings, setSavings] = useState('0')
-  const [expenses, setExpenses] = useState([])
-  const [needsOriginalVal, setNeedsOriginalVal] = useState('0');
-  const [wantsOriginalVal, setWantsOriginalVal] = useState('0');
-  const [savingsOriginalVal, setSavingsOriginalVal] = useState('0');
-  const [overallSavings, setOverallSavings] = useState('0');
+  const [needs, setNeeds] = useState("0");
+  const [wants, setWants] = useState("0");
+  const [savings, setSavings] = useState("0");
+  const [expenses, setExpenses] = useState([]);
+  const [needsOriginalVal, setNeedsOriginalVal] = useState("0");
+  const [wantsOriginalVal, setWantsOriginalVal] = useState("0");
+  const [savingsOriginalVal, setSavingsOriginalVal] = useState("0");
+  const [overallSavings, setOverallSavings] = useState("0");
 
   // Validate input for salary, then calculate budget based on input
   const validateIncome = (e) => {
@@ -32,13 +32,20 @@ function App() {
       let needs = ((value * 0.5) / 12).toFixed(2);
       let wants = ((value * 0.3) / 12).toFixed(2);
       let savings = ((value * 0.2) / 12).toFixed(2);
-      let overallSavings = parseFloat(needs) + parseFloat(wants) + parseFloat(savings);
-      
+      let overallSavings =
+        parseFloat(needs) + parseFloat(wants) + parseFloat(savings);
+
       // Set original values for needs and wants to use for calculations later.
       // Cannot use monthly budget value due to changing amount with later calculations.
-      setNeedsOriginalVal(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      setWantsOriginalVal(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      setSavingsOriginalVal(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+      setNeedsOriginalVal(
+        needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+      setWantsOriginalVal(
+        wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+      setSavingsOriginalVal(
+        savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
       // setOverallSavings()
       // console.log(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
       // console.log(needsOriginalVal)
@@ -47,9 +54,10 @@ function App() {
       setNeeds(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setWants(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setSavings(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-      setOverallSavings(overallSavings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    } 
-    else {
+      setOverallSavings(
+        overallSavings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
+    } else {
       // If nothing is in field, set budget to 0
       setNeeds(0);
       setNeedsOriginalVal(0);
@@ -65,116 +73,156 @@ function App() {
   // Add expenses to expenses state array
   const addExpense = (expenses) => {
     if (expenses === 0) {
-      return null
+      return null;
     }
-    setExpenses(expenses)
-  }
+    setExpenses(expenses);
+  };
 
   const deleteExpense = (expenses) => {
     if (expenses.length !== 0) {
-      setExpenses([...expenses])
+      setExpenses([...expenses]);
     } else {
-      setExpenses([])
+      setExpenses([]);
     }
-  }
+  };
 
   // Adjust budget when expenses state is updated
   useEffect(() => {
-    const needsExpensesVals = []
-    const wantsExpensesVals = []
+    const needsExpensesVals = [];
+    const wantsExpensesVals = [];
 
     // console.log('useEffect expenses:', expenses)
 
-    if (typeof(expenses) !== 'undefined' && expenses.length !== 0) {
+    if (typeof expenses !== "undefined" && expenses.length !== 0) {
       expenses.map((expense) => {
         // If expense type is "need"
-        if (expense.type == 'need') {
-          needsExpensesVals.push(expense.amount)
+        if (expense.type == "need") {
+          needsExpensesVals.push(expense.amount);
           if (needsExpensesVals.length !== 0) {
-            const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
+            const sumNeedsExpensesPerYear = needsExpensesVals.reduce(
+              (prev, current) => prev + current
+            );
 
-            if (typeof(sumNeedsExpensesPerYear) !== 'undefined' && sumNeedsExpensesPerYear !== null) {
-              const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
-              setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            if (
+              typeof sumNeedsExpensesPerYear !== "undefined" &&
+              sumNeedsExpensesPerYear !== null
+            ) {
+              const needsAdj = (
+                parseFloat(needsOriginalVal.replace(",", "")) -
+                sumNeedsExpensesPerYear
+              ).toFixed(2);
+              setNeeds(
+                needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              );
               // console.log('1st useEffect needs: ', needs)
 
-              const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+              const overallSavingsCalc =
+                parseFloat(needsAdj.replace(",", "")) +
+                parseFloat(wants.replace(",", "")) +
+                parseFloat(savings.replace(",", ""));
+              setOverallSavings(
+                overallSavingsCalc
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              );
             }
-            
           } else {
-            setNeeds(needsOriginalVal)
+            setNeeds(needsOriginalVal);
           }
         }
         // If expense type is "want"
-        else if (expense.type === 'want') {
-          wantsExpensesVals.push(expense.amount)
+        else if (expense.type === "want") {
+          wantsExpensesVals.push(expense.amount);
           if (wantsExpensesVals.length !== 0) {
-            const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
+            const sumWantsExpensesPerYear = wantsExpensesVals.reduce(
+              (prev, current) => prev + current
+            );
 
-            if (typeof(sumWantsExpensesPerYear) !== 'undefined' && sumWantsExpensesPerYear !== null) {
-              const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
-              setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            if (
+              typeof sumWantsExpensesPerYear !== "undefined" &&
+              sumWantsExpensesPerYear !== null
+            ) {
+              const wantsAdj = (
+                parseFloat(wantsOriginalVal.replace(",", "")) -
+                sumWantsExpensesPerYear
+              ).toFixed(2);
+              setWants(
+                wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              );
               // console.log('1st useEffect wants: ', wants)
 
-              const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + 
-                parseFloat((wantsAdj).replace(',', ''))) + 
-                parseFloat((savings).replace(',', ''))
-              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+              const overallSavingsCalc =
+                parseFloat(needs.replace(",", "")) +
+                parseFloat(wantsAdj.replace(",", "")) +
+                parseFloat(savings.replace(",", ""));
+              setOverallSavings(
+                overallSavingsCalc
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              );
             }
-
           } else {
-            setWants(wantsOriginalVal)
+            setWants(wantsOriginalVal);
           }
         }
-      })
+      });
     }
     // If expenses are empty
     else {
-      setNeeds(needsOriginalVal)
-      setWants(wantsOriginalVal)
-      
+      setNeeds(needsOriginalVal);
+      setWants(wantsOriginalVal);
+
       // Set overall savings amount when there are no expenses (Avoids error on page load)
       setOverallSavings(
-        parseFloat((needsOriginalVal).replace(',', '')) + 
-        parseFloat((wantsOriginalVal).replace(',', '')) + 
-        parseFloat((savingsOriginalVal).replace(',', ''))
-      )
+        parseFloat(needsOriginalVal.replace(",", "")) +
+          parseFloat(wantsOriginalVal.replace(",", "")) +
+          parseFloat(savingsOriginalVal.replace(",", ""))
+      );
     }
-  }, [expenses])
+  }, [expenses]);
 
   const clearAll = () => {
-    if (window.confirm("Are you sure you would like to reset all information?") === true) {
-      document.getElementById('annual-salary').value='';
-      setNeeds('0')
-      setWants('0')
-      setSavings('0')
-      setExpenses([])
-      setNeedsOriginalVal('0')
-      setWantsOriginalVal('0')
-      setSavingsOriginalVal('0')
-      setOverallSavings('0')
+    if (
+      window.confirm(
+        "Are you sure you would like to reset all information?"
+      ) === true
+    ) {
+      document.getElementById("annual-salary").value = "";
+      setNeeds("0");
+      setWants("0");
+      setSavings("0");
+      setExpenses([]);
+      setNeedsOriginalVal("0");
+      setWantsOriginalVal("0");
+      setSavingsOriginalVal("0");
+      setOverallSavings("0");
     }
-  }
+  };
 
   return (
-    <div className="container">
+    <div className="container flex-row justify-content-center">
       <Header />
-      <Income onChange={validateIncome}/>
-      <Expenses 
-        expenses={expenses} 
-        onAdd={addExpense} 
-        onDelete={deleteExpense}
-      />
-      <Budget 
-        needs={needs} 
-        wants={wants} 
-        savings={savings} 
-        overallSavings={overallSavings} 
-        needsOriginalVal={needsOriginalVal} 
-        wantsOriginalVal={wantsOriginalVal}
-      />
+      <Income onChange={validateIncome} />
       <Reset onClick={clearAll} />
+      <div className="row">
+        <div className="col-sm-6">
+          <Expenses
+            expenses={expenses}
+            onAdd={addExpense}
+            onDelete={deleteExpense}
+          />
+        </div>
+        <div className="col-sm-6">
+          <Budget
+            needs={needs}
+            wants={wants}
+            savings={savings}
+            overallSavings={overallSavings}
+            needsOriginalVal={needsOriginalVal}
+            wantsOriginalVal={wantsOriginalVal}
+          />
+        </div>
+      </div>
     </div>
   );
 }

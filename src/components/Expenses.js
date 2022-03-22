@@ -1,5 +1,5 @@
-import {React, useState} from "react";
-import { Typography, TextField, FormControl, Button} from "@mui/material";
+import { React, useState } from "react";
+import { Typography, TextField, FormControl, Button } from "@mui/material";
 import Expense from "./Expense";
 
 /* TODO:
@@ -10,91 +10,147 @@ import Expense from "./Expense";
   - Add delete button next to each item
 */
 
-const Expenses = ({expenses, onAdd, onDelete}) => {
+const Expenses = ({ expenses, onAdd, onDelete }) => {
   const [inputProps, setInputProps] = useState({
     type: "number",
     step: ".01",
   });
-  const [expense, setExpense] = useState('')
-  const [expAmt, setExpAmt] = useState('')
-  const [expType, setExpType] = useState('')
-  const [keyCounter, updateKeyCounter] = useState(1)
-  
+  const [expense, setExpense] = useState("");
+  const [expAmt, setExpAmt] = useState("");
+  const [expType, setExpType] = useState("");
+  const [keyCounter, updateKeyCounter] = useState(1);
+
   const showAddExpenses = (e) => {
-    let form = e.target.previousSibling
+    let form = document.getElementById("expense-form");
     if (form.className.includes("hide")) {
-      e.target.innerHTML = "Hide"
-      form.classList.add("show")
-      form.classList.remove("hide")
+      e.target.innerHTML = "Hide";
+      form.classList.add("show");
+      form.classList.remove("hide");
     } else {
-      e.target.innerHTML = "Add expenses"
-      form.classList.remove("show")
-      form.classList.add("hide")
+      e.target.innerHTML = "Add expenses";
+      form.classList.remove("show");
+      form.classList.add("hide");
     }
-  }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     // If value entered, pass expenses entries to App
     if (e.target[0].value !== "" && e.target[1].value !== "") {
-      let keyCounterIncr = keyCounter + 1
-      onAdd([...expenses, {id: keyCounter, name: expense, amount: parseInt(expAmt, 10), type: expType}])
-      updateKeyCounter(keyCounterIncr)
+      console.log(e.target[0].value, e.target[1].value);
+      let keyCounterIncr = keyCounter + 1;
+      onAdd([
+        ...expenses,
+        {
+          id: keyCounter,
+          name: expense,
+          amount: parseInt(expAmt, 10),
+          type: expType,
+        },
+      ]);
+      updateKeyCounter(keyCounterIncr);
     }
 
     // Reset to blank for new entry
-    setExpense('')
-    setExpAmt('')
+    setExpense("");
+    setExpAmt("");
 
     // Place focus on expense name for quicker new entry
+    document.getElementById("expense-type").value = null;
     document.getElementById("expense-type").focus();
-  }
+  };
 
   return (
     <div className="expenses">
       {/* <Typography variant="h4">Monthly Expenses</Typography> */}
-      <h1 className="header-title">Monthly Expenses</h1>
+      <h2 className="header-title">Monthly Expenses</h2>
 
       <div className="expenses-box">
-        <Expense expenses={expenses} expType={expType} onDelete={onDelete}/>
-        <hr/>
+        <Expense expenses={expenses} expType={expType} onDelete={onDelete} />
+        <hr className="expense-divider hide" />
         <div className="add-expenses-collapsible">
-          <form className="expense-form hide" onSubmit={onSubmit}>
-            <input 
-              id="expense-type" 
+          <form id="expense-form" className="hide" onSubmit={onSubmit}>
+            <FormControl>
+              <TextField
+                id="expense-type"
+                className="expense-input-field"
+                type="text"
+                label="Name"
+                variant="outlined"
+                onChange={(e) => setExpense(e.target.value)}
+              />
+              <TextField
+                id="expense-amt"
+                className="expense-input-field"
+                type="number"
+                label="Amount ($)"
+                variant="outlined"
+                value={expAmt}
+                onChange={(e) => setExpAmt(e.target.value)}
+              />
+            </FormControl>
+            {/* <input
+              id="expense-type"
               type="text"
-              placeholder="Name" 
-              value={expense} 
+              placeholder="Name"
+              value={expense}
               onChange={(e) => setExpense(e.target.value)}
             />
-            <input 
-              id="expense-amt" 
+            <input
+              id="expense-amt"
               type="number"
-              placeholder="Amount ($)" 
-              value={expAmt} 
+              placeholder="Amount ($)"
+              value={expAmt}
               onChange={(e) => setExpAmt(e.target.value)}
+            /> */}
+            <br />
+            <input
+              required
+              type="radio"
+              id="expense-want"
+              name="expense-type"
+              value="want"
+              onClick={(e) => {
+                setExpType("want");
+              }}
             />
+            <label htmlFor="expense-want" className="radio-label">
+              Want
+            </label>
             <br />
-            <input required type="radio" id="expense-want" name="expense-type" value="want" 
-            onClick={
-              (e) => {
-                setExpType('want')
-              }
-            }/>
-            <label htmlFor="expense-want">Want</label>
+            <input
+              type="radio"
+              id="expense-need"
+              name="expense-type"
+              value="need"
+              onClick={(e) => {
+                setExpType("need");
+              }}
+            />
+            <label htmlFor="expense-need" className="radio-label">
+              Need
+            </label>
             <br />
-            <input type="radio" id="expense-need" name="expense-type" value="need" 
-            onClick={
-              (e) => {
-                setExpType('need')
-              } 
-            }/>
-            <label htmlFor="expense-need">Need</label>
-            <br />
-            <Button variant="contained" color="success" size="medium" type="submit">Add expense</Button>
+            <Button
+              variant="contained"
+              color="success"
+              size="medium"
+              type="submit"
+            >
+              Add expense
+            </Button>
           </form>
-          <Button variant="outlined" color="secondary" size="medium" onClick={showAddExpenses}>Add expenses</Button>
+          <div className="show-hide-expenses-form-button">
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="medium"
+              onClick={showAddExpenses}
+            >
+              Add expenses
+            </Button>
+          </div>
         </div>
         {/* <FormControl>
           <TextField
