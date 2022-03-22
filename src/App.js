@@ -40,8 +40,8 @@ function App() {
       setWantsOriginalVal(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setSavingsOriginalVal(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
       // setOverallSavings()
-      console.log(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-      console.log(needsOriginalVal)
+      // console.log(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+      // console.log(needsOriginalVal)
 
       // Set budget with conversion to string to add in comma
       setNeeds(needs.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
@@ -86,53 +86,62 @@ function App() {
     // console.log('useEffect expenses:', expenses)
 
     if (typeof(expenses) !== 'undefined' && expenses.length !== 0) {
-      {expenses.map((expense) => {
+      expenses.map((expense) => {
+        // If expense type is "need"
         if (expense.type == 'need') {
           needsExpensesVals.push(expense.amount)
           if (needsExpensesVals.length !== 0) {
             const sumNeedsExpensesPerYear = (needsExpensesVals.reduce((prev, current) => prev + current))
-            const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
-            setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-            console.log('1st useEffect needs: ', needs)
-            // const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-            // setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+
+            if (typeof(sumNeedsExpensesPerYear) !== 'undefined' && sumNeedsExpensesPerYear !== null) {
+              const needsAdj = (parseFloat((needsOriginalVal).replace(',', '')) - sumNeedsExpensesPerYear).toFixed(2);
+              setNeeds(needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+              // console.log('1st useEffect needs: ', needs)
+
+              const overallSavingsCalc = (parseFloat((needsAdj).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
+              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            }
+            
           } else {
             setNeeds(needsOriginalVal)
           }
         }
+        // If expense type is "want"
         else if (expense.type === 'want') {
           wantsExpensesVals.push(expense.amount)
           if (wantsExpensesVals.length !== 0) {
             const sumWantsExpensesPerYear = (wantsExpensesVals.reduce((prev, current) => prev + current))
-            const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
-            setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-            console.log('1st useEffect wants: ', wants)
-            // const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wantsAdj).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-            // setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+
+            if (typeof(sumWantsExpensesPerYear) !== 'undefined' && sumWantsExpensesPerYear !== null) {
+              const wantsAdj = (parseFloat((wantsOriginalVal).replace(',', '')) - sumWantsExpensesPerYear).toFixed(2);
+              setWants(wantsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+              // console.log('1st useEffect wants: ', wants)
+
+              const overallSavingsCalc = (parseFloat((needs).replace(',', '')) + 
+                parseFloat((wantsAdj).replace(',', ''))) + 
+                parseFloat((savings).replace(',', ''))
+              setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+            }
+
           } else {
             setWants(wantsOriginalVal)
           }
         }
-      })}
-    } 
+      })
+    }
     // If expenses are empty
     else {
       setNeeds(needsOriginalVal)
       setWants(wantsOriginalVal)
       
       // Set overall savings amount when there are no expenses (Avoids error on page load)
-      setOverallSavings(parseFloat((needsOriginalVal).replace(',', '')) + parseFloat((wantsOriginalVal).replace(',', '')) + parseFloat((savingsOriginalVal).replace(',', '')))
+      setOverallSavings(
+        parseFloat((needsOriginalVal).replace(',', '')) + 
+        parseFloat((wantsOriginalVal).replace(',', '')) + 
+        parseFloat((savingsOriginalVal).replace(',', ''))
+      )
     }
   }, [expenses])
-
-  // Update savings (will this work?)
-  // useEffect(() => {
-  //   // console.log('update savings needs', needs)
-  //   // console.log('update savings wants', wants)
-  //   let overallSavingsCalc = (parseFloat((needs).replace(',', '')) + parseFloat((wants).replace(',', ''))) + parseFloat((savings).replace(',', ''))
-  //   console.log('update savings overallSavingsCalc', overallSavingsCalc)
-  //   setOverallSavings(overallSavingsCalc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-  // }, [needs, wants])
 
   const clearAll = () => {
     if (window.confirm("Are you sure you would like to reset all information?") === true) {
@@ -152,8 +161,19 @@ function App() {
     <div className="container">
       <Header />
       <Income onChange={validateIncome}/>
-      <Expenses expenses={expenses} onAdd={addExpense} onDelete={deleteExpense}/>
-      <Budget needs={needs} wants={wants} savings={savings} overallSavings={overallSavings} needsOriginalVal={needsOriginalVal} wantsOriginalVal={wantsOriginalVal}/>
+      <Expenses 
+        expenses={expenses} 
+        onAdd={addExpense} 
+        onDelete={deleteExpense}
+      />
+      <Budget 
+        needs={needs} 
+        wants={wants} 
+        savings={savings} 
+        overallSavings={overallSavings} 
+        needsOriginalVal={needsOriginalVal} 
+        wantsOriginalVal={wantsOriginalVal}
+      />
       <Reset onClick={clearAll} />
     </div>
   );
