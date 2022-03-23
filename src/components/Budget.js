@@ -15,7 +15,7 @@ const Budget = ({
       <h2 className="title">Monthly Budget</h2>
       <div className="budget-box">
         <p>
-          <span className={`key needs`}>Needs </span>
+          <span className="needs">Needs </span>
           <span className="info">(50%): </span>
           <span className="result">${needs}</span>
           <br />
@@ -25,7 +25,7 @@ const Budget = ({
           </span>
         </p>
         <p>
-          <span className={`key wants`}> Wants </span>
+          <span className="wants"> Wants </span>
           <span className="info">(30%): </span>
           <span className="result">${wants}</span>
           <br />
@@ -35,16 +35,13 @@ const Budget = ({
           </span>
         </p>
         <p className="savings-amount">
-          <span className={`key savings`}>Savings </span>
+          <span className="savings">Savings </span>
           <span className="info">(20%): </span>
           <span className="result">${savings}</span>
           {/* <span className="original-val"> (Original amount: ${}) </span> */}
         </p>
         <hr />
-        <p className="overall-savings">
-          <span className={`key`}>Overall Savings: </span>
-          <span>${overallSavings}</span>
-        </p>
+        <h3 className="overall-savings">Overall Savings: ${overallSavings}</h3>
       </div>
     </div>
   );

@@ -11,7 +11,6 @@ body {
 }
 body h1,
 h2,
-h3,
 span {
   color: rgb(50, 50, 50);
 }
@@ -152,7 +151,7 @@ input[type="number"] {
   font-weight: 600;
 }
 .budget-box .overall-savings {
-  color: darkgreen;
+  color: rgb(0, 102, 17);
   font-size: 1.15em;
   font-weight: 800;
 }
