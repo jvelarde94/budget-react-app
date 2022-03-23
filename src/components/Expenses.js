@@ -98,7 +98,7 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
                 onChange={(e) => setExpAmt(e.target.value)}
               />
               <div className="radio-buttons-group">
-                <FormLabel id="expense-type-button-group-label">
+                <FormLabel id="expense-type-radio-buttons-group-label">
                   Expense Type
                 </FormLabel>
                 <RadioGroup
