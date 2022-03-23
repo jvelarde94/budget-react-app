@@ -133,7 +133,7 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
             </FormControl>
             <div className="add-expense-button">
               <Button
-                variant="contained"
+                variant="outlined"
                 color="success"
                 size="medium"
                 type="submit"

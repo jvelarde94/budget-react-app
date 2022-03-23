@@ -6,12 +6,12 @@ const Reset = ({ onClick }) => {
     <div className="reset">
       {/* <img className="img" src="./rs-goblin.png"/> */}
       <Button
-        variant="outlined"
+        variant="contained"
         color="error"
         className="reset-data"
         onClick={onClick}
       >
-        The reset button
+        The big old reset button
       </Button>
     </div>
   );
