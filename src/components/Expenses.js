@@ -38,7 +38,6 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
 
     // If value entered, pass expenses entries to App
     if (e.target[0].value !== "" && e.target[1].value !== "") {
-      console.log(e.target[0].value, e.target[1].value);
       let keyCounterIncr = keyCounter + 1;
       onAdd([
         ...expenses,
@@ -64,11 +63,11 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
   return (
     <div className="expenses">
       {/* <Typography variant="h4">Monthly Expenses</Typography> */}
-      <h2 className="header-title">Monthly Expenses</h2>
+      <h2 className="title">Monthly Expenses</h2>
 
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType} onDelete={onDelete} />
-        <hr className="expense-divider hide" />
+        <hr id="expense-form-divider" className="expense-divider hide" />
         <div className="add-expenses-collapsible">
           <form id="expense-form" className="hide" onSubmit={onSubmit}>
             <FormControl>
@@ -90,20 +89,6 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
                 onChange={(e) => setExpAmt(e.target.value)}
               />
             </FormControl>
-            {/* <input
-              id="expense-type"
-              type="text"
-              placeholder="Name"
-              value={expense}
-              onChange={(e) => setExpense(e.target.value)}
-            />
-            <input
-              id="expense-amt"
-              type="number"
-              placeholder="Amount ($)"
-              value={expAmt}
-              onChange={(e) => setExpAmt(e.target.value)}
-            /> */}
             <br />
             <input
               required
@@ -152,16 +137,6 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
             </Button>
           </div>
         </div>
-        {/* <FormControl>
-          <TextField
-            id="expense-amt"
-            className="salary-input"
-            label="Amount ($)"
-            variant="standard"
-            inputProps={inputProps}
-            onChange={(e) => setExpense(e.target.value)}
-          />
-        </FormControl> */}
       </div>
     </div>
   );

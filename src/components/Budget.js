@@ -12,7 +12,7 @@ const Budget = ({
   return (
     <div className="budget">
       {/* <Typography variant="h4">Monthly Budget</Typography> */}
-      <h2 className="header-title">Monthly Budget</h2>
+      <h2 className="title">Monthly Budget</h2>
       <div className="budget-box">
         <p>
           <span className={`key needs`}>Needs </span>

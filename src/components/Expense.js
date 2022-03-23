@@ -21,14 +21,12 @@ const Expense = ({ expenses, onDelete }) => {
     onDelete(expenses);
   };
 
-  // Show/hide dividers in expense box
+  // Show/hide expense titles and dividers in expense box
   useEffect(() => {
-    let topDivider = document.getElementsByClassName("top-divider");
+    let needsColumnTitle = document.getElementById("expense-title-needs");
+    let wantsColumnTitle = document.getElementById("expense-title-wants");
     let verticalDivider = document.getElementsByClassName("vertical-line");
-
-    if (typeof topDivider !== "undefined" && topDivider.length !== 0) {
-      var topDividerArray = Array.from(topDivider);
-    }
+    let formDivider = document.getElementById("expense-form-divider");
 
     if (
       typeof verticalDivider !== "undefined" &&
@@ -38,14 +36,20 @@ const Expense = ({ expenses, onDelete }) => {
     }
 
     if (expenses.length !== 0) {
-      // Show expense list top divider when expenses are not empty
-      if (topDividerArray.length !== 0) {
-        topDividerArray.forEach((element) => {
-          if (element.className.includes("hide")) {
-            element.classList.add("show");
-            element.classList.remove("hide");
-          }
-        });
+      // Show expense list titles when expenses are not empty
+      if (
+        typeof needsColumnTitle !== "undefined" &&
+        needsColumnTitle.className.includes("hide")
+      ) {
+        needsColumnTitle.classList.add("show");
+        needsColumnTitle.classList.remove("hide");
+      }
+      if (
+        typeof wantsColumnTitle !== "undefined" &&
+        wantsColumnTitle.className.includes("hide")
+      ) {
+        wantsColumnTitle.classList.add("show");
+        wantsColumnTitle.classList.remove("hide");
       }
 
       // Show expense list vertical divider when expenses are not empty
@@ -57,26 +61,43 @@ const Expense = ({ expenses, onDelete }) => {
           }
         });
       }
+
+      // Show expense form divider
+      if (formDivider.className.includes("hide")) {
+        formDivider.classList.add("show");
+        formDivider.classList.remove("hide");
+      }
     } else {
-      topDividerArray.forEach((element) => {
-        if (element.className.includes("show")) {
-          element.classList.add("hide");
-          element.classList.remove("show");
-        }
-      });
+      // Hide list titles and dividers when expenses is empty
+      if (needsColumnTitle.className.includes("show")) {
+        needsColumnTitle.classList.add("hide");
+        needsColumnTitle.classList.remove("show");
+      }
+      if (wantsColumnTitle.className.includes("show")) {
+        wantsColumnTitle.classList.add("hide");
+        wantsColumnTitle.classList.remove("show");
+      }
+
       verticalDividerArray.forEach((element) => {
         if (element.className.includes("show")) {
           element.classList.add("hide");
           element.classList.remove("show");
         }
       });
+
+      if (formDivider.className.includes("show")) {
+        wantsColumnTitle.classList.add("hide");
+        wantsColumnTitle.classList.remove("show");
+      }
     }
   }, [expenses]);
 
   return (
     <div className="row expense-list">
       <div className="expense-column-needs col-md-5">
-        <hr className="top-divider expense-divider  hide" />
+        <span id="expense-title-needs" className="hide">
+          Needs
+        </span>
         {expenses &&
           expenses.map((expense) => (
             <div
@@ -84,6 +105,7 @@ const Expense = ({ expenses, onDelete }) => {
               id={"need-" + expense.id}
               className={expense.type === "need" ? "expense-row-need" : "hide"}
             >
+              <hr className="expense-divider" />
               <span
                 className={
                   expense.type === "need" ? "expense-label-need" : "hide"
@@ -98,8 +120,6 @@ const Expense = ({ expenses, onDelete }) => {
                 aria-label="Close"
                 onClick={(e) => deleteExpense(e)}
               />
-              {/* <button onClick={(e) => deleteExpense(e)}>Delete</button> */}
-              <hr className="expense-divider" />
             </div>
           ))}
       </div>
@@ -107,7 +127,9 @@ const Expense = ({ expenses, onDelete }) => {
       <div className="vertical-line hide col-md-1 offset-md-1" />
 
       <div className="expense-column-wants col-md-5">
-        <hr className="top-divider expense-divider hide" />
+        <span id="expense-title-wants" className="hide">
+          Wants
+        </span>
         {expenses &&
           expenses.map((expense) => (
             <div
@@ -115,6 +137,7 @@ const Expense = ({ expenses, onDelete }) => {
               id={"want-" + expense.id}
               className={expense.type === "want" ? "expense-row-want" : "hide"}
             >
+              <hr className="expense-divider" />
               <span
                 className={
                   expense.type === "want" ? "expense-label-want" : "hide"
@@ -129,8 +152,6 @@ const Expense = ({ expenses, onDelete }) => {
                 aria-label="Close"
                 onClick={(e) => deleteExpense(e)}
               />
-              {/* <button onClick={(e) => deleteExpense(e)}>Delete</button> */}
-              <hr className="expense-divider" />
             </div>
           ))}
       </div>

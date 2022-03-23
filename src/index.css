@@ -9,6 +9,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body h1,
+h2,
+h3,
+span {
+  color: rgb(50, 50, 50);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -36,19 +42,33 @@ code {
 }
 .header .small-funny-text {
   display: block;
-  font-size: 7px;
+  font-size: 8px;
   margin: 0 auto;
   text-align: center;
+}
+.header .version-number {
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .header-title {
   text-align: center;
+  text-shadow: 1px 1px lightgrey;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.title {
+  text-align: center;
+  text-shadow: 1px 1px lightgrey;
+  font-weight: 500;
 }
 
 .img {
-  max-width: 150px;
-  max-height: 150px;
-  display: block;
+  max-width: 50px;
+  max-height: 25px;
+  display: inline-block;
+  /* margin-bottom: 9px; */
 }
 
 .hide {
@@ -68,6 +88,7 @@ code {
 }
 .income-form .salary-input {
   /* margin-bottom: 20px; */
+  box-shadow: 3px 2px grey;
 }
 /* END INCOME */
 
@@ -94,7 +115,8 @@ input[type="number"] {
 }
 .budget-box {
   width: 75%;
-  border: 2px solid grey;
+  border: 2px solid lightgrey;
+  box-shadow: 3px 2px grey;
   padding: 25px;
   margin: 0 auto;
   text-align: center;
@@ -148,7 +170,8 @@ input[type="number"] {
 .expenses-box {
   /* min-height: 311px; */
   width: 75%;
-  border: 2px solid grey;
+  border: 2px solid lightgrey;
+  box-shadow: 3px 2px grey;
   padding: 25px;
   margin: 0 auto;
   font-size: 18px;
@@ -192,7 +215,9 @@ input[type="number"] {
   margin: 15px auto;
 }
 .expense-list .vertical-line {
-  border-left: 2px solid grey;
+  border-left: 2px solid lightgrey;
+  /* position: relative;
+  left: 15; */
 }
 .expense-list .expense-divider {
   margin: 5px auto;
@@ -212,16 +237,19 @@ input[type="number"] {
 .expense-label-want {
   color: blue;
   /* text-decoration: underline; */
+  font-size: 17px;
   font-weight: 600;
   margin: 0 7px;
 }
 .expense-label-need {
   color: orange;
   /* text-decoration: underline; */
+  font-size: 17px;
   font-weight: 600;
   margin: 0 7px;
 }
 .expense-amount {
+  font-size: 17px;
   font-weight: 600;
 }
 .expense-type-want {
@@ -245,7 +273,7 @@ input[type="number"] {
 
 .savings-box {
   width: 100%;
-  border: 2px solid grey;
+  border: 2px solid lightgrey;
   padding: 13px;
   text-align: center;
   font-size: 18px;
