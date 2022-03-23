@@ -86,8 +86,8 @@ const Expense = ({ expenses, onDelete }) => {
       });
 
       if (formDivider.className.includes("show")) {
-        wantsColumnTitle.classList.add("hide");
-        wantsColumnTitle.classList.remove("show");
+        formDivider.classList.add("hide");
+        formDivider.classList.remove("show");
       }
     }
   }, [expenses]);
