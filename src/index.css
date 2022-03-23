@@ -52,8 +52,8 @@ code {
 
 .header-title {
   text-align: center;
-  text-shadow: 1px 1px lightgrey;
-  font-weight: 500;
+  text-shadow: 2px 2px lightgrey;
+  font-weight: 600;
   display: inline-block;
 }
 
@@ -125,7 +125,8 @@ input[type="number"] {
   font-weight: 700;
 }
 .budget-box .info {
-  font-size: 0.85em;
+  font-size: 0.75em;
+  /* font-style: italic; */
   font-weight: 500;
 }
 .budget-box .needs {
