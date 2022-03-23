@@ -72,6 +72,7 @@ function App() {
 
   // Add expenses to expenses state array
   const addExpense = (expenses) => {
+    console.log(expenses);
     if (expenses === 0) {
       return null;
     }
@@ -184,7 +185,7 @@ function App() {
   const clearAll = () => {
     if (
       window.confirm(
-        "Are you sure you would like to reset all information?"
+        "Are you sure you would like to reset all information on this page?"
       ) === true
     ) {
       document.getElementById("annual-salary").value = "";
@@ -203,7 +204,6 @@ function App() {
     <div className="container flex-row justify-content-center">
       <Header />
       <Income onChange={validateIncome} />
-      <Reset onClick={clearAll} />
       <div className="row">
         <div className="col-sm-6">
           <Expenses
@@ -221,6 +221,7 @@ function App() {
             needsOriginalVal={needsOriginalVal}
             wantsOriginalVal={wantsOriginalVal}
           />
+          <Reset onClick={clearAll} />
         </div>
       </div>
     </div>

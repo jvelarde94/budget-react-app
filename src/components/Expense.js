@@ -95,9 +95,9 @@ const Expense = ({ expenses, onDelete }) => {
   return (
     <div className="row expense-list">
       <div className="expense-column-needs col-md-5">
-        <span id="expense-title-needs" className="hide">
+        <h5 id="expense-title-needs" className="hide">
           Needs
-        </span>
+        </h5>
         {expenses &&
           expenses.map((expense) => (
             <div
@@ -127,9 +127,9 @@ const Expense = ({ expenses, onDelete }) => {
       <div className="vertical-line hide col-md-1 offset-md-1" />
 
       <div className="expense-column-wants col-md-5">
-        <span id="expense-title-wants" className="hide">
+        <h5 id="expense-title-wants" className="hide">
           Wants
-        </span>
+        </h5>
         {expenses &&
           expenses.map((expense) => (
             <div

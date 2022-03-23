@@ -1,5 +1,14 @@
 import { React, useState } from "react";
-import { Typography, TextField, FormControl, Button } from "@mui/material";
+import {
+  Typography,
+  TextField,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Button,
+  RadioGroup,
+  Radio,
+} from "@mui/material";
 import Expense from "./Expense";
 
 /* TODO:
@@ -21,15 +30,15 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
   const [keyCounter, updateKeyCounter] = useState(1);
 
   const showAddExpenses = (e) => {
-    let form = document.getElementById("expense-form");
+    let form = document.getElementById("expenses-form");
     if (form.className.includes("hide")) {
       e.target.innerHTML = "Hide";
-      form.classList.add("show");
-      form.classList.remove("hide");
+      form.classList.toggle("show");
+      form.classList.toggle("hide");
     } else {
       e.target.innerHTML = "Add expenses";
-      form.classList.remove("show");
-      form.classList.add("hide");
+      form.classList.toggle("show");
+      form.classList.toggle("hide");
     }
   };
 
@@ -68,14 +77,14 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType} onDelete={onDelete} />
         <hr id="expense-form-divider" className="expense-divider hide" />
-        <div className="add-expenses-collapsible">
-          <form id="expense-form" className="hide" onSubmit={onSubmit}>
+        <div className="add-expenses-collapsible expenses-form-container">
+          <form id="expenses-form" className="hide" onSubmit={onSubmit}>
             <FormControl>
               <TextField
                 id="expense-type"
                 className="expense-input-field"
                 type="text"
-                label="Name"
+                label="Name:"
                 variant="outlined"
                 onChange={(e) => setExpense(e.target.value)}
               />
@@ -83,48 +92,55 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
                 id="expense-amt"
                 className="expense-input-field"
                 type="number"
-                label="Amount ($)"
+                label="Amount ($):"
                 variant="outlined"
                 value={expAmt}
                 onChange={(e) => setExpAmt(e.target.value)}
               />
+              <div className="radio-buttons-group">
+                <FormLabel id="expense-type-button-group-label">
+                  Expense Type
+                </FormLabel>
+                <RadioGroup
+                  className="radio-buttons"
+                  row
+                  aria-labelledby="expense-type-radio-buttons-group-label"
+                  // defaultValue="need"
+                  name="expense-type"
+                >
+                  <FormControlLabel
+                    id="expense-need"
+                    value="need"
+                    // name="expense-type"
+                    control={<Radio />}
+                    label="Need"
+                    onClick={(e) => {
+                      setExpType("need");
+                    }}
+                  />
+                  <FormControlLabel
+                    id="expense-want"
+                    // name="expense-type"
+                    value="want"
+                    control={<Radio />}
+                    label="Want"
+                    onClick={(e) => {
+                      setExpType("want");
+                    }}
+                  />
+                </RadioGroup>
+              </div>
             </FormControl>
-            <br />
-            <input
-              required
-              type="radio"
-              id="expense-want"
-              name="expense-type"
-              value="want"
-              onClick={(e) => {
-                setExpType("want");
-              }}
-            />
-            <label htmlFor="expense-want" className="radio-label">
-              Want
-            </label>
-            <br />
-            <input
-              type="radio"
-              id="expense-need"
-              name="expense-type"
-              value="need"
-              onClick={(e) => {
-                setExpType("need");
-              }}
-            />
-            <label htmlFor="expense-need" className="radio-label">
-              Need
-            </label>
-            <br />
-            <Button
-              variant="contained"
-              color="success"
-              size="medium"
-              type="submit"
-            >
-              Add expense
-            </Button>
+            <div className="add-expense-button">
+              <Button
+                variant="contained"
+                color="success"
+                size="medium"
+                type="submit"
+              >
+                Add expense
+              </Button>
+            </div>
           </form>
           <div className="show-hide-expenses-form-button">
             <Button

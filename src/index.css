@@ -109,7 +109,7 @@ input[type="number"] {
   /* grid-column: 2 / 4;
   grid-row: 3; */
   width: 100%;
-  margin: 25px auto;
+  margin: 0 auto;
   display: inline-block;
 }
 .budget-box {
@@ -125,21 +125,23 @@ input[type="number"] {
   font-weight: 700;
 }
 .budget-box .info {
-  font-style: italic;
   font-size: 0.85em;
   font-weight: 500;
 }
 .budget-box .needs {
   color: orange;
+  font-weight: 600;
 }
 .budget-box .wants {
   color: blue;
+  font-weight: 600;
 }
 .budget-box .savings-amount {
   margin: 25px auto 0 auto;
 }
 .budget-box .savings {
   color: green;
+  font-weight: 600;
 }
 .budget-box .result {
   font-weight: 700;
@@ -147,7 +149,6 @@ input[type="number"] {
 }
 .budget-box .original-val {
   font-size: 0.65em;
-  font-style: italic;
   font-weight: 600;
 }
 .budget-box .overall-savings {
@@ -163,7 +164,7 @@ input[type="number"] {
   grid-row: 3; */
   width: 100%;
   /* text-align: center; */
-  margin: 25px auto;
+  margin: 0 auto;
   display: inline-block;
 }
 .expenses-box {
@@ -175,14 +176,17 @@ input[type="number"] {
   margin: 0 auto;
   font-size: 18px;
 }
-.expenses-box .show-hide-expenses-form-button {
+.expenses-box .add-expense-button {
+  margin: 0 auto;
   text-align: center;
 }
-.expenses-box #expense-type,
-.expenses-box #expense-amt {
-  display: inline-block;
-  margin: 5px auto;
-  padding: 10px;
+.expenses-box .show-hide-expenses-form-button {
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+.expenses-box .expense-input-field {
+  /* display: inline-block; */
+  margin: 2px auto;
   line-height: 2px;
 }
 .expenses-box .radio-label {
@@ -196,9 +200,28 @@ input[type="number"] {
 }
 .expenses-box .hide {
   display: none;
+  transition-property: display transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
 }
 .expenses-box .show {
   display: block;
+  transition-property: display transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1.5s;
+}
+.expenses-box .expenses-form-container {
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+.expenses-box #expense-type-button-group-label {
+  display: block;
+}
+.expenses-box .radio-buttons {
+  display: inline;
+}
+.expenses-box .radio-buttons-group {
+  margin: 10px auto;
 }
 /* END EXPENSES*/
 
@@ -212,6 +235,14 @@ input[type="number"] {
   align-content: space-evenly;
   align-items: center; */
   margin: 15px auto;
+}
+#expense-title-needs {
+  color: orange;
+  font-weight: 600;
+}
+#expense-title-wants {
+  color: blue;
+  font-weight: 600;
 }
 .expense-list .vertical-line {
   border-left: 2px solid lightgrey;
@@ -236,15 +267,15 @@ input[type="number"] {
 .expense-label-want {
   color: blue;
   /* text-decoration: underline; */
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   margin: 0 7px;
 }
 .expense-label-need {
   color: orange;
   /* text-decoration: underline; */
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   margin: 0 7px;
 }
 .expense-amount {
@@ -256,11 +287,6 @@ input[type="number"] {
 }
 .expense-type-need {
   color: orange;
-}
-
-#expense-form {
-  margin: 2px auto;
-  text-align: center;
 }
 /* END EXPENSE */
 
@@ -283,7 +309,7 @@ input[type="number"] {
 .reset {
   /* grid-column: 1 / 4;
   grid-row: 4; */
-  margin: 0 auto;
+  margin: 50px auto 10px auto;
   /* position: absolute; */
   /* right: 100px; */
   text-align: center;
@@ -297,12 +323,18 @@ input[type="number"] {
   }
   .income {
     width: 100%;
+    margin: 10px auto;
   }
   .expenses {
     width: 100%;
+    margin: 10px auto;
   }
   .budget {
     width: 100%;
+    margin: 10px auto;
+  }
+  .reset {
+    margin: 10px auto;
   }
 }
 /* END MOBILE STYLES */
