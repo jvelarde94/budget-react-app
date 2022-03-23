@@ -11,7 +11,7 @@ const Reset = ({ onClick }) => {
         className="reset-data"
         onClick={onClick}
       >
-        The big old reset button
+        The reset button
       </Button>
     </div>
   );
