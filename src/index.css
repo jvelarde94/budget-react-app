@@ -115,6 +115,7 @@ input[type="number"] {
 .budget-box {
   width: 75%;
   border: 2px solid lightgrey;
+  border-radius: 15px;
   box-shadow: 3px 2px grey;
   padding: 25px;
   margin: 0 auto;
@@ -172,6 +173,7 @@ input[type="number"] {
   /* min-height: 311px; */
   width: 75%;
   border: 2px solid lightgrey;
+  border-radius: 15px;
   box-shadow: 3px 2px grey;
   padding: 25px;
   margin: 0 auto;
