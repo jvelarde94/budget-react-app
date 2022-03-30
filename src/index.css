@@ -75,6 +75,35 @@ code {
 }
 /* END CUSTOM CLASSES */
 
+/* INFO MODAL */
+.modal-button-container {
+  margin: 60px auto 0 auto;
+}
+
+.modal-section-header {
+  font-weight: 600;
+}
+
+.modal-info {
+  font-size: 15px;
+}
+
+.modal-info .main-info {
+  font-size: 15px;
+}
+
+.modal-info .extra-info {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-info .main-info .example-expenses {
+  font-size: 15px;
+  /* font-style: italic; */
+  font-weight: 600;
+}
+/* END INFO MODAL */
+
 /* INCOME */
 .income-form {
   /* grid-column: 2 / 3;
@@ -154,7 +183,7 @@ input[type="number"] {
   font-weight: 600;
 }
 .budget-box .overall-savings {
-  color: rgb(0, 102, 17);
+  color: forestgreen;
   font-size: 1.15em;
   font-weight: 800;
 }
@@ -184,7 +213,7 @@ input[type="number"] {
   text-align: center;
 }
 .expenses-box .show-hide-expenses-form-button {
-  margin: 25px auto 0 auto;
+  margin: 15px auto 0 auto;
   text-align: center;
 }
 .expenses-box .expense-input-field {
@@ -312,7 +341,7 @@ input[type="number"] {
 .reset {
   /* grid-column: 1 / 4;
   grid-row: 4; */
-  margin: 50px auto 10px auto;
+  margin: 15px auto 0 auto;
   /* position: absolute; */
   /* right: 100px; */
   text-align: center;

@@ -1,18 +1,32 @@
-import React from "react";
+import {React, useState} from "react";
 import Button from "@mui/material/Button";
+import Tooltip from '@mui/material/Tooltip';
 
 const Reset = ({ onClick }) => {
+  const [hover, setHover] = useState(false);
+
+  const tooltipStyle = {
+    display: hover ? "block" : "none"
+  }
+
   return (
     <div className="reset">
       {/* <img className="img" src="./rs-goblin.png"/> */}
-      <Button
-        variant="contained"
-        color="error"
-        className="reset-data"
-        onClick={onClick}
+      <Tooltip 
+        placement="top" 
+        title="This will reset everything!"
       >
-        The reset button
-      </Button>
+        <Button
+          variant="contained"
+          color="error"
+          className="reset-data"
+          onClick={onClick}
+          onMouseOver={() => setHover(true)}
+          onMouseOut={() => setHover(false)}
+        >
+          Reset
+        </Button>
+      </Tooltip>
     </div>
   );
 };

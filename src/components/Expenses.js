@@ -84,7 +84,7 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
                 id="expense-type"
                 className="expense-input-field"
                 type="text"
-                label="Name:"
+                label="Expense name:"
                 variant="outlined"
                 onChange={(e) => setExpense(e.target.value)}
               />
@@ -99,7 +99,7 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
               />
               <div className="radio-buttons-group">
                 <FormLabel id="expense-type-radio-buttons-group-label">
-                  Expense Type
+                  <h5>Expense Type:</h5>
                 </FormLabel>
                 <RadioGroup
                   className="radio-buttons"
