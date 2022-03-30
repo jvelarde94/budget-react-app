@@ -211,20 +211,22 @@ input[type="number"] {
   background-color: rgb(255, 250, 245);
 }
 .budget-box .overall-savings {
-  color: forestgreen;
+  color: rgb(34, 139, 34);
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .budget-box .overall-savings-dollar {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 600;
   text-shadow: 1px 1px lightgrey;
+  color: rgb(34, 139, 34);
 }
 .budget-box .overall-savings-result {
   display: inline;
   text-decoration: underline;
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 28px;
+  color: rgb(34, 139, 34);
   text-shadow: 1px 1px lightgrey;
 }
 /* END BUDGET */
