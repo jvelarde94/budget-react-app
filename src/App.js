@@ -220,6 +220,7 @@ function App() {
   return (
     <div className="container flex-row justify-content-center">
       <Header />
+      <Reset onClick={clearAll} />
       <Income onChange={validateIncome} />
       <div className="row">
         <div className="col-sm-6">
@@ -240,8 +241,6 @@ function App() {
           />
         </div>
       </div>
-      <Info />
-      <Reset onClick={clearAll} />
     </div>
   );
 }

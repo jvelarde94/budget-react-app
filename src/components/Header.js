@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
+import Info from "./Info";
 
 const Header = () => {
   return (
@@ -24,12 +25,15 @@ const Header = () => {
         <span>Budget Manager</span><br/> 
         <span>Tool</span>
       </div>
-        <span className="version-number">
-          {" "}
-          v9000.1
-          <img src="vegeta-over-9000.png" className="img" />
-        </span>
-        <span className="small-funny-text">By Jeremy Velarde</span>
+      
+      <span className="version-number">
+        {" "}
+        v9000.1
+        <img src="vegeta-over-9000.png" className="img" />
+      </span>
+      <span className="small-funny-text">By Jeremy Velarde</span>
+
+      <Info />
     </div>
   );
 };
