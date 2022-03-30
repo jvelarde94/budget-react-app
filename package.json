@@ -1,7 +1,7 @@
 {
   "name": "budget-react-app",
   "version": "0.1.0",
-  "homepage": "https://jvelarde94.github.io/budget-react-app",
+  // "homepage": "https://jvelarde94.github.io/budget-react-app",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    // "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
