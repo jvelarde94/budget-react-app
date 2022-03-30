@@ -215,6 +215,18 @@ input[type="number"] {
   font-size: 24px;
   font-weight: 700;
 }
+.budget-box .overall-savings-dollar {
+  font-size: 24px;
+  font-weight: 500;
+  text-shadow: 1px 1px lightgrey;
+}
+.budget-box .overall-savings-result {
+  display: inline;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 24px;
+  text-shadow: 1px 1px lightgrey;
+}
 /* END BUDGET */
 
 /* EXPENSES */

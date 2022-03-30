@@ -67,7 +67,8 @@ const Budget = ({
         </div>
         <div className="overall-savings-section">
           <h3 className="overall-savings">Overall Savings:</h3>
-          <h3 className="overall-savings result">$ {overallSavings}</h3>
+          <span className="overall-savings-dollar">$</span>
+          <span className="overall-savings-result">{overallSavings}</span>
           
         </div>
       </div>
