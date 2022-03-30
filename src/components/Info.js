@@ -4,6 +4,7 @@ import {React, useState} from 'react'
 import Button from "@mui/material/Button";
 import Modal from 'react-bootstrap/Modal'
 import Link from '@mui/material/Link';
+import Tooltip from '@mui/material/Tooltip';
 
 const Info = () => {
   const [show, setShow] = useState(false);
@@ -14,9 +15,14 @@ const Info = () => {
     <>
     <div className="row">
         <div className="modal-button-container d-flex">
-            <Button variant="contained" onClick={handleShow}>
-                Help!
-            </Button>
+            <Tooltip 
+                placement="right" 
+                title="Everything you want to know."
+            >
+                <Button variant="contained" onClick={handleShow}>
+                    Help!
+                </Button>
+            </Tooltip>
 
             <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

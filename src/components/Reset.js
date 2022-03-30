@@ -14,8 +14,7 @@ const Reset = ({ onClick }) => {
       <div className="reset d-flex">
         {/* <img className="img" src="./rs-goblin.png"/> */}
         <Tooltip 
-          placement="top" 
-          title="This will reset everything!"
+          title="This will reset everything and make it all go away!"
         >
           <Button
             variant="contained"

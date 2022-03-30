@@ -156,14 +156,19 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
             </div>
           </form>
           <div className="show-hide-expenses-form-button">
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="medium"
-              onClick={showAddExpenses}
+            <Tooltip 
+              placement="right"
+              title="Show me the money (loss)!"
             >
-              Add expenses
-            </Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                size="medium"
+                onClick={showAddExpenses}
+              >
+                Add expenses
+              </Button>
+            </Tooltip>
           </div>
         </div>
       </div>
