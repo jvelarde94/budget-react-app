@@ -3,6 +3,7 @@ import {React, useState} from 'react'
 
 import Button from "@mui/material/Button";
 import Modal from 'react-bootstrap/Modal'
+import Link from '@mui/material/Link';
 
 const Info = () => {
   const [show, setShow] = useState(false);
@@ -59,13 +60,22 @@ const Info = () => {
                         Enter your Annual Income&nbsp;
                         <span className="extra-info">
                         (after-tax preferred for more accuracy - you can calculate this using&nbsp;
-                        <a href="https://smartasset.com/taxes/paycheck-calculator#kN1QYbuC7j">this tool</a>.)&nbsp;
+                        <Link href="https://smartasset.com/taxes/paycheck-calculator#kN1QYbuC7j" underline="hover">this tool</Link>.)&nbsp;
+                        {/* <a href="https://smartasset.com/taxes/paycheck-calculator#kN1QYbuC7j">this tool</a>.)&nbsp; */}
                         </span>
-                        This will calculate your monthly budget based on the 50/30/20 budget rule.
+                        This will calculate your monthly budget according to the 50/30/20 budget rule.
                     </li>
                     <br />
                     <li>
                         Add your monthly expenses and categorize each expense as a "need" or "want." This will update your monthly budget amounts accordingly.
+                    </li>
+                    <br />
+                    <li>
+                        Your overall savings is a combination of Savings and any leftover money from "Wants" or "Needs."
+                    </li>
+                    <br />
+                    <li>
+                        Use the <span style={{color: "red"}}>Reset</span> button to clear everything and start over.
                     </li>
                     <br />
                     <li>
