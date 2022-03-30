@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/budget-react-app/static/css/main.9c230351.css",
-    "main.js": "/budget-react-app/static/js/main.cb6e0e29.js",
+    "main.js": "/budget-react-app/static/js/main.d994dff6.js",
     "static/media/roboto-all-500-normal.woff": "/budget-react-app/static/media/roboto-all-500-normal.52cb737b682eb9661ee1.woff",
     "static/media/roboto-latin-500-normal.woff2": "/budget-react-app/static/media/roboto-latin-500-normal.869888415d0b1a99ae5c.woff2",
     "static/media/roboto-cyrillic-ext-500-normal.woff2": "/budget-react-app/static/media/roboto-cyrillic-ext-500-normal.3e748c93fe6a87bdedaa.woff2",
@@ -12,10 +12,10 @@
     "static/media/roboto-greek-ext-500-normal.woff2": "/budget-react-app/static/media/roboto-greek-ext-500-normal.9c0d384f31e2c914edf3.woff2",
     "index.html": "/budget-react-app/index.html",
     "main.9c230351.css.map": "/budget-react-app/static/css/main.9c230351.css.map",
-    "main.cb6e0e29.js.map": "/budget-react-app/static/js/main.cb6e0e29.js.map"
+    "main.d994dff6.js.map": "/budget-react-app/static/js/main.d994dff6.js.map"
   },
   "entrypoints": [
     "static/css/main.9c230351.css",
-    "static/js/main.cb6e0e29.js"
+    "static/js/main.d994dff6.js"
   ]
 }
