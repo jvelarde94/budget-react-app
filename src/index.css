@@ -175,6 +175,7 @@ input[type="number"] {
 }
 .budget-box .needs-section {
   background-color: rgb(255, 240, 230);
+  padding-top: 15px;
 }
 .budget-box .needs {
   color: orange;
@@ -183,17 +184,20 @@ input[type="number"] {
 }
 .budget-box .wants-section {
   background-color: rgb(227, 241, 253);
+  padding-top: 15px;
 }
 .budget-box .wants {
   color: skyblue;
   font-size: 24px;
   font-weight: 600;
 }
-.budget-box .savings-amount {
+/* .budget-box .savings-amount {
   margin: 25px auto 0 auto;
-}
+} */
 .budget-box .savings-section {
   background-color: rgb(226, 250, 230);
+  padding-top: 15px;
+  /* margin-bottom: 15px; */
 }
 
 .budget-box .savings {
@@ -213,7 +217,7 @@ input[type="number"] {
   color:rgb(76 76 76);
 }
 .budget-box .overall-savings-section {
-  padding: 5px;
+  padding: 15px 0;
   background-color: rgb(255, 250, 245);
 }
 .budget-box .overall-savings {
@@ -234,6 +238,10 @@ input[type="number"] {
   font-size: 28px;
   color: rgb(34, 139, 34);
   text-shadow: 1px 1px lightgrey;
+}
+
+.budget-box .budget-divider {
+  margin: 0;
 }
 /* END BUDGET */
 
@@ -350,17 +358,17 @@ input[type="number"] {
   /* grid-column: 2/2; */
 }
 .expense-label-want {
-  color: lightseagreen;
+  color: skyblue;
   /* text-decoration: underline; */
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0 7px;
 }
 .expense-label-need {
   color: orange;
   /* text-decoration: underline; */
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0 7px;
 }
 .expense-amount {

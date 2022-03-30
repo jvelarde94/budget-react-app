@@ -39,7 +39,7 @@ const Budget = ({
               (Original amount: ${needsOriginalVal}){" "}
             </span>
           </p>
-          <hr />
+          <hr className="budget-divider"/>
         </div>
         <div className="wants-section">
           <p>
@@ -53,17 +53,17 @@ const Budget = ({
               (Original amount: ${wantsOriginalVal}){" "}
             </span>
           </p>
-          <hr />
+          <hr className="budget-divider"/>
         </div>
         <div className="savings-section">
-          <p className="savings-amount">
+          <p>
             <span className="savings">Savings </span>
             <span className="info">(20%): </span>
             <span className="dollar"> $</span>
             <span className="result">{savings}</span>
             {/* <span className="original-val"> (Original amount: ${}) </span> */}
           </p>
-        <hr />
+        <hr className="budget-divider"/>
         </div>
         <div className="overall-savings-section">
           <h3 className="overall-savings">Overall Savings:</h3>
