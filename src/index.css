@@ -80,7 +80,7 @@ code {
 
 /* INFO MODAL */
 .modal-button-container {
-  margin: 60px auto 0 auto;
+  margin: 30px auto 0 auto;
 }
 
 .modal-section-header {
@@ -367,6 +367,10 @@ input[type="number"] {
   .header .small-funny-text, .version-number {
     /* display: block;
     text-align: center; */
+  }
+  .header .modal-button-container {
+    margin: 25px auto;
+    justify-content: center;
   }
   
   .income {

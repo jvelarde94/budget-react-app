@@ -12,7 +12,7 @@ const Info = () => {
   return (
     <>
     <div className="row">
-        <div className="modal-button-container d-flex justify-content-center ">
+        <div className="modal-button-container d-flex">
             <Button variant="contained" onClick={handleShow}>
                 Help!
             </Button>

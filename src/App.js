@@ -233,7 +233,6 @@ function App() {
           />
         </div>
       </div>
-      <Info />
       <Reset onClick={clearAll} />
     </div>
   );
