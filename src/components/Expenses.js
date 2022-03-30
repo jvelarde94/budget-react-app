@@ -9,6 +9,8 @@ import {
   RadioGroup,
   Radio,
 } from "@mui/material";
+import Tooltip from '@mui/material/Tooltip';
+import HelpIcon from '@mui/icons-material/Help';
 import Expense from "./Expense";
 
 /* TODO:
@@ -72,7 +74,18 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
   return (
     <div className="expenses">
       {/* <Typography variant="h4">Monthly Expenses</Typography> */}
-      <h2 className="title">Monthly Expenses</h2>
+      <div className="title">
+        <h2>Monthly Expenses </h2>
+        <Tooltip
+          placement="right" 
+          title='
+            After entering your annual income above, add your monthly expenses and categorize each expense as either a "Need" or "Want." 
+            This will update your monthly budget, found to the right. 
+          '
+        >
+          <HelpIcon color="action" sx={{ fontSize: 18 }}/>
+        </Tooltip>
+      </div>
 
       <div className="expenses-box">
         <Expense expenses={expenses} expType={expType} onDelete={onDelete} />

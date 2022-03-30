@@ -60,16 +60,16 @@ function App() {
       setWants(wants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setSavings(savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
       setOverallSavings(
-        overallSavings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        overallSavings.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       );
     } else {
       // If nothing is in field, set budget to 0
-      setNeeds(0);
-      setNeedsOriginalVal(0);
-      setWants(0);
-      setWantsOriginalVal(0);
-      setSavings(0);
-      setOverallSavings(0);
+      setNeeds('0');
+      setNeedsOriginalVal('0');
+      setWants('0');
+      setWantsOriginalVal('0');
+      setSavings('0');
+      setOverallSavings('0');
 
       // TODO: Print error message above or beneath input field
     }
@@ -126,8 +126,15 @@ function App() {
                 parseFloat(needsAdj.replace(",", "")) +
                 parseFloat(wants.replace(",", "")) +
                 parseFloat(savings.replace(",", ""));
+                if (typeof overallSavingsCalc !== 'undefined') {
+                  console.log(
+                    needsAdj.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    overallSavingsCalc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  );
+                }
               setOverallSavings(
                 overallSavingsCalc
+                  .toFixed(2)
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
               );

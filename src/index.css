@@ -65,6 +65,9 @@ code {
   text-shadow: 1px 1px lightgrey;
   font-weight: 500;
 }
+.title h2 {
+  display: inline;
+}
 
 .img {
   max-width: 50px;
@@ -153,42 +156,81 @@ input[type="number"] {
   margin: 0 auto;
   text-align: center;
   font-size: 18px;
+  text-shadow: 1px 1px lightgrey;
 }
 .budget-box .key {
-  font-weight: 700;
+  font-weight: 600;
 }
 .budget-box .info {
-  font-size: 0.75em;
+  font-size: 18px;
   /* font-style: italic; */
   font-weight: 500;
 }
+.budget-box .dollar {
+  font-size: 24px;
+  font-weight: 500;
+}
+.budget-box .needs-section {
+  background-color: rgb(255, 240, 230);
+}
 .budget-box .needs {
   color: orange;
+  font-size: 24px;
   font-weight: 600;
 }
+.budget-box .wants-section {
+  background-color: rgb(227, 241, 253);
+}
 .budget-box .wants {
-  color: blue;
+  color: skyblue;
+  font-size: 24px;
   font-weight: 600;
 }
 .budget-box .savings-amount {
   margin: 25px auto 0 auto;
 }
+.budget-box .savings-section {
+  background-color: rgb(226, 250, 230);
+}
+
 .budget-box .savings {
-  color: green;
+  color:mediumseagreen;
+  font-size: 24px;
   font-weight: 600;
 }
 .budget-box .result {
-  font-weight: 700;
-  /* text-decoration: underline; */
+  font-weight: 600;
+  font-size: 22px;
+  text-decoration: underline;
+  color:rgb(76 76 76);
 }
 .budget-box .original-val {
-  font-size: 0.65em;
+  font-size: 16px;
   font-weight: 600;
+  color:rgb(76 76 76);
+}
+.budget-box .overall-savings-section {
+  padding: 5px;
+  background-color: rgb(255, 250, 245);
 }
 .budget-box .overall-savings {
-  color: forestgreen;
-  font-size: 1.15em;
-  font-weight: 800;
+  color: rgb(34, 139, 34);
+  font-size: 24px;
+  font-weight: 600;
+}
+.budget-box .overall-savings-dollar {
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 1px 1px lightgrey;
+  color: rgb(34, 139, 34);
+}
+.budget-box .overall-savings-result {
+  display: inline;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 28px;
+  color: rgb(34, 139, 34);
+  text-shadow: 1px 1px lightgrey;
 }
 /* END BUDGET */
 
@@ -251,6 +293,9 @@ input[type="number"] {
 }
 .expenses-box #expense-type-radio-buttons-group-label {
   display: block;
+  /* text-decoration: underline; */
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 .expenses-box .radio-buttons {
   display: inline;
@@ -273,10 +318,12 @@ input[type="number"] {
 }
 #expense-title-needs {
   color: orange;
+  text-shadow: 1px 1px lightgrey;
   font-weight: 600;
 }
 #expense-title-wants {
-  color: blue;
+  color: skyblue;
+  text-shadow: 1px 1px lightgrey;
   font-weight: 600;
 }
 .expense-list .vertical-line {
@@ -300,21 +347,21 @@ input[type="number"] {
   /* grid-column: 2/2; */
 }
 .expense-label-want {
-  color: blue;
+  color: lightseagreen;
   /* text-decoration: underline; */
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0 7px;
 }
 .expense-label-need {
   color: orange;
   /* text-decoration: underline; */
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0 7px;
 }
 .expense-amount {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
 }
 .expense-type-want {

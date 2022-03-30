@@ -7,6 +7,9 @@ const Header = () => {
       {/* <Typography variant="h3">Super Simple Budget Tool Manager 9000</Typography> */}
       {/* <h1 className="header-title">
         Super Simple Budget Manager Tool
+        {/* <span>Super Simple</span><br/> 
+        <span>Budget Manager</span><br/> 
+        <span>Tool</span><br/>  */}
         <span className="version-number">
           {" "}
           (v9000.1
