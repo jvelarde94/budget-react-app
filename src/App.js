@@ -1,17 +1,11 @@
 import { React, useState, useEffect } from "react";
 import "@fontsource/roboto/500.css";
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
 
 import Header from "./components/Header";
 import Budget from "./components/Budget";
 import Expenses from "./components/Expenses";
 import Income from "./components/Income";
 import Reset from "./components/Reset";
-import Info from "./components/Info";
-// import Leftover from "./components/Leftover";
-// import Savings from "./components/Savings";
-// import Networth from "./components/Networth";
 
 function App() {
   // Initialize each state used across the app
