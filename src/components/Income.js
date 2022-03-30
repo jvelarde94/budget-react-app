@@ -18,7 +18,7 @@ const Income = ({ onChange }) => {
           placement="right" 
           title='
             Enter your annual salary (after-tax preferred for better accuracy). If you are paid hourly, please calculate using:
-            (rate) * (hoursPerWeek) * (52)
+            (rate * hoursPerWeek * 52), then enter your result here.
           '
         >
           <HelpIcon color="action" sx={{ fontSize: 18 }}/>
@@ -28,7 +28,7 @@ const Income = ({ onChange }) => {
         <TextField
           id="annual-salary"
           className="salary-input"
-          label="Annual Salary ($):"
+          label="Annual Salary ($)"
           variant="filled"
           inputProps={inputProps}
           onChange={onChange}

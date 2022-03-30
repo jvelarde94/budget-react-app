@@ -97,16 +97,18 @@ const Expenses = ({ expenses, onAdd, onDelete }) => {
                 id="expense-type"
                 className="expense-input-field"
                 type="text"
-                label="Expense name:"
-                variant="outlined"
+                label="Expense name"
+                // variant="outlined"
+                variant="filled"
                 onChange={(e) => setExpense(e.target.value)}
               />
               <TextField
                 id="expense-amt"
                 className="expense-input-field"
                 type="number"
-                label="Amount ($):"
-                variant="outlined"
+                label="Amount ($)"
+                // variant="outlined"
+                variant="filled"
                 value={expAmt}
                 onChange={(e) => setExpAmt(e.target.value)}
               />

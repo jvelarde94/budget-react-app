@@ -20,7 +20,7 @@ const Info = () => {
                 title="Everything you want to know."
             >
                 <Button variant="contained" onClick={handleShow}>
-                    Help!
+                    Help!!
                 </Button>
             </Tooltip>
 
