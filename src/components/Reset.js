@@ -10,23 +10,25 @@ const Reset = ({ onClick }) => {
   }
 
   return (
-    <div className="reset">
-      {/* <img className="img" src="./rs-goblin.png"/> */}
-      <Tooltip 
-        placement="top" 
-        title="This will reset everything!"
-      >
-        <Button
-          variant="contained"
-          color="error"
-          className="reset-data"
-          onClick={onClick}
-          onMouseOver={() => setHover(true)}
-          onMouseOut={() => setHover(false)}
+    <div className="row">
+      <div className="reset d-flex">
+        {/* <img className="img" src="./rs-goblin.png"/> */}
+        <Tooltip 
+          placement="top" 
+          title="This will reset everything!"
         >
-          Reset
-        </Button>
-      </Tooltip>
+          <Button
+            variant="contained"
+            color="error"
+            className="reset-data"
+            onClick={onClick}
+            onMouseOver={() => setHover(true)}
+            onMouseOut={() => setHover(false)}
+          >
+            Reset
+          </Button>
+        </Tooltip>
+      </div>
     </div>
   );
 };

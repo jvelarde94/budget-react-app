@@ -389,17 +389,18 @@ input[type="number"] {
 
 /* RESET */
 .reset {
+  position: absolute;
+  left: 38px;
+  top: 305px;
+  /* margin: 15px auto 0 auto;
+  text-align: center; */
   /* grid-column: 1 / 4;
   grid-row: 4; */
-  margin: 15px auto 0 auto;
-  /* position: absolute; */
-  /* right: 100px; */
-  text-align: center;
 }
 /* END RESET*/
 
 /* MOBILE STYLES */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
   .header {
     width: 100%;
     position: relative;
@@ -416,7 +417,7 @@ input[type="number"] {
     text-align: center; */
   }
   .header .modal-button-container {
-    margin: 25px auto;
+    margin: 25px auto 15px auto;
     justify-content: center;
   }
   
@@ -439,7 +440,15 @@ input[type="number"] {
     margin: 10px auto;
   }
   .reset {
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
   }
 }
 /* END MOBILE STYLES */
