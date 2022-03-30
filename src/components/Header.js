@@ -10,7 +10,7 @@ const Header = () => {
         {/* <span>Super Simple</span><br/> 
         <span>Budget Manager</span><br/> 
         <span>Tool</span><br/>  */}
-        <span className="version-number">
+        {/* <span className="version-number">
           {" "}
           (v9000.1
           <img src="vegeta-over-9000.png" className="img" />)
