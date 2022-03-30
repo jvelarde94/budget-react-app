@@ -102,6 +102,9 @@ code {
   font-size: 13px;
   font-weight: 600;
 }
+.modal-info .modal-list {
+  margin: 9px auto;
+}
 
 .modal-info .main-info .example-expenses {
   font-size: 15px;
