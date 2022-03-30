@@ -400,6 +400,7 @@ input[type="number"] {
 
 /* RESET */
 .reset {
+  max-width: 10%;
   position: absolute;
   left: 38px;
   top: 295px;
